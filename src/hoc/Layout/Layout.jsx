@@ -1,13 +1,14 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Header from '../../containers/Header/Header';
 import classes from './Layout.module.scss';
+import Router from '../Router/Router';
 
-
-export default (props) => (
+export default withRouter((props) => (
   <div className={classes.Layout}>
     <Header />
     <main>
-      {props.children}
+      <Router />
     </main>
   </div>
-);
+));
