@@ -15,5 +15,5 @@ export default (props) => {
       <h1>Not Found</h1>
       {isAuth}
     </div>
-  );
+  )
 };

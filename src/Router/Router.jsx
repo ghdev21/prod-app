@@ -7,13 +7,19 @@ import Statistic from '../containers/Statistic/Statistic';
 import ProtectedRoute from './protectedRoute';
 import Login from '../containers/Login/Login';
 import NotFound from '../containers/NotFound/NotFound';
+import {
+  TASK_LIST,
+  SETTINGS,
+  STATISTIC,
+  LOGIN,
+} from '../constants/Routes';
 
 export default (props) => (
   <Switch>
-    <ProtectedRoute path="/task-list" component={TaskList} />
-    <ProtectedRoute path="/settings" component={Settings} />
-    <ProtectedRoute path="/statistic" component={Statistic} />
-    <Route path="/login" component={Login} />
+    <ProtectedRoute path={`/${TASK_LIST}`} component={TaskList} />
+    <ProtectedRoute path={`/${SETTINGS}`} component={Settings} />
+    <ProtectedRoute path={`/${STATISTIC}`} component={Statistic} />
+    <Route path={`/${LOGIN}`} component={Login} />
     <Route path="*" component={NotFound} />
   </Switch>
 );

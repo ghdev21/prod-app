@@ -1,0 +1,23 @@
+@import "../../../assets/styles/helpers/variables";
+.Button {
+  max-width: 137px;
+  width: 100%;
+  min-height: 42px;
+  display: inline-block;
+  text-align: center;
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  & + & {
+    margin-left: 20px;
+  }
+}
+
+.Green{
+  background: $btn-green;
+  max-width: 125px;
+}
+.Blue {
+  background: $btn-blue;
+}

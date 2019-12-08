@@ -1,0 +1,51 @@
+@import "../../../assets/styles/helpers/variables";
+
+.List {
+  margin: 70px auto 0;
+  max-width: 288px;
+  color: $nepal;
+  font-size: 1rem;
+}
+
+.ButtonWrapper {
+  margin-top: 97px;
+  text-align: center;
+}
+
+.ListItem {
+  position: relative;
+  &::before{
+    position: absolute;
+    content: '';
+    top: 2px;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+  }
+  & + & {
+    margin-top: 34px;
+  }
+  span {
+    display: block;
+    margin-left: 40px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid $border;
+  }
+}
+
+.Work::before{
+  background-color: $work;
+}
+.Education::before{
+  background-color: $education;
+}
+.Hobby::before{
+  background-color: $hobby;
+}
+.Sport::before{
+  background-color: $sport;
+}
+.Other::before{
+  background-color: $other;
+}

@@ -2,9 +2,14 @@ import React from 'react';
 
 import NavigationItem from './NavigationItem/NavigationItem';
 import classes from './NavigationItems.module.scss';
+import {
+  TASK_LIST,
+  SETTINGS,
+  STATISTIC,
+} from '../../../constants/Routes';
 
 export default (props) => (
   <ul className={classes.Menu}>
-    {['task-list', 'statistic', 'settings'].map((item) => <NavigationItem title={item} key={item} />)}
+    {[TASK_LIST, STATISTIC, SETTINGS].map((item) => <NavigationItem title={item} key={item} />)}
   </ul>
 );
