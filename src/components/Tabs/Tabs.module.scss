@@ -23,7 +23,14 @@
 .TabsLink {
   color: $nepal;
   text-decoration: none;
+  &:hover,
+  &:active {
+    color: $spray;
+  }
 }
-.Active{
+.Active {
   color: white;
+  &:hover{
+    color: white;
+  }
 }

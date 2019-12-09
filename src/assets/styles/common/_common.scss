@@ -26,6 +26,9 @@ button {
 
 button {
   cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 h1,
