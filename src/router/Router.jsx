@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import TaskList from '../containers/TaskList/TaskList';
 import Settings from '../containers/Settings/Settings';
 import Statistic from '../containers/Statistic/Statistic';
-import ProtectedRoute from './protectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 import Login from '../containers/Login/Login';
 import NotFound from '../containers/NotFound/NotFound';
 import {
@@ -14,7 +14,7 @@ import {
   LOGIN,
 } from '../constants/Routes';
 
-export default (props) => (
+export default () => (
   <Switch>
     <ProtectedRoute path={`/${TASK_LIST}`} component={TaskList} />
     <ProtectedRoute path={`/${SETTINGS}`} component={Settings} />

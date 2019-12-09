@@ -6,17 +6,7 @@ import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import TimeLineSegment from './TimeLineSegment';
 import TimeLineMark from './TimeLineMark';
 import classes from './TimeLine.module.scss';
-
-const toMinutes = (num) => {
-  const hours = Math.floor(num / 60);
-  const minutes = num % 60;
-  let time = `${hours}h ${minutes} m `;
-  if (hours === 0) time = `${minutes} m`;
-  if (minutes === 0) {
-    time = `${hours}h`;
-  }
-  return time;
-};
+import convertNumToTIme from '../../assets/helpers/convertNumToTIme';
 
 export default ({ state }) => {
   const [work, iteration, short, long] = state;
@@ -27,11 +17,23 @@ export default ({ state }) => {
   const cycleTime = workWithShortBreaks + long.value;
   let currentTime = 0;
 
+  const timeIntervals = [...Array(Math.floor(totalTime / 30))].map((_) => {
+
+    if ((currentTime + 30) < totalTime) {
+      currentTime += 30;
+    }
+    return { time: currentTime };
+  });
+  const topMarks = [
+    { text: convertNumToTIme(0), opts: 'Start' },
+    { text: `First cycle ${convertNumToTIme(cycleTime)}`, time: cycleTime },
+    { text: convertNumToTIme(totalTime), opts: 'End' },
+  ];
   const timeMarkHandler = (timeMark) => (
     <TimeLineMark
       key={uuid()}
       leftShift={`${unit * timeMark.time}%`}
-      text={timeMark.text || toMinutes(timeMark.time)}
+      text={timeMark.text || convertNumToTIme(timeMark.time)}
       markOpts={timeMark.opts}
     />
   );
@@ -60,19 +62,7 @@ export default ({ state }) => {
       segment="longBreak"
       size={unit * long.value}
     />, workProccess];
-  // eslint-disable-next-line array-callback-return
-  const timeIntervals = [...Array(Math.floor(totalTime / 30))].map((_) => {
 
-    if ((currentTime + 30) < totalTime) {
-      currentTime += 30;
-    }
-    return { time: currentTime };
-  });
-  const topMarks = [
-    { text: toMinutes(0), opts: 'Start' },
-    { text: `First cycle ${toMinutes(totalTime)}`, time: cycleTime },
-    { text: toMinutes(totalTime), opts: 'End' },
-  ];
   const getMappedList = map(timeMarkHandler);
   const topMarksContainer = getMappedList(topMarks);
   const markLines = getMappedList(timeIntervals);
