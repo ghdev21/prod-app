@@ -4,8 +4,8 @@ import uuid from 'uuid/v1';
 import TimeLineSegment from './TimeLineSegment';
 import TimeLineMark from './TimeLineMark';
 import classes from './TimeLine.module.scss';
-import convertNumToTIme from '../../assets/helpers/convertNumToTIme';
-import getTimeLineData from '../../assets/helpers/getTimeLineData';
+import convertNumToTIme from '../../helpers/convertNumToTIme';
+import getTimeLineData from '../../helpers/getTimeLineData';
 
 export default ({ state }) => {
   const [work, iteration, short, long] = state;
