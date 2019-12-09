@@ -4,11 +4,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: $white;
+  color: $color-white;
 }
 
 .Title {
   margin-bottom: 22px;
-  font-size: 1.75rem;
+  font-size: $font-size-heading1;
   font-weight: 500;
 }

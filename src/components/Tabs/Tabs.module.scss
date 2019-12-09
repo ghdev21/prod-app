@@ -1,36 +1,44 @@
 @import "../../assets/styles/helpers/variables";
-.Tabs{
+
+.Tabs {
   position: absolute;
   top: 12px;
   right: 0;
   display: flex;
   font-size: 1rem;
 }
+
 .TabsItem {
   text-transform: capitalize;
- & + & {
-   padding-left: 20px;
-   position: relative;
-   &::before{
-     position: absolute;
-     content: '|';
-     left: 10px;
-     color: $nepal;
-     transform: translateX(-50%);
-   }
- }
-}
-.TabsLink {
-  color: $nepal;
-  text-decoration: none;
-  &:hover,
-  &:active {
-    color: $spray;
+
+  & + & {
+    padding-left: 20px;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '|';
+      left: 10px;
+      color: $color-nepal;
+      transform: translateX(-50%);
+    }
   }
 }
+
+.TabsLink {
+  color: $color-nepal;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    color: $color-spray;
+  }
+}
+
 .Active {
-  color: white;
-  &:hover{
-    color: white;
+  color: $color-white;
+
+  &:hover {
+    color: $color-white;
   }
 }

@@ -3,7 +3,7 @@
 .List {
   margin: 70px auto 0;
   max-width: 288px;
-  color: $nepal;
+  color: $color-nepal;
   font-size: 1rem;
 }
 
@@ -14,7 +14,8 @@
 
 .ListItem {
   position: relative;
-  &::before{
+
+  &::before {
     position: absolute;
     content: '';
     top: 2px;
@@ -23,29 +24,35 @@
     width: 17px;
     border-radius: 50%;
   }
+
   & + & {
     margin-top: 34px;
   }
+
   span {
     display: block;
     margin-left: 40px;
     padding-bottom: 10px;
-    border-bottom: 3px solid $border;
+    border-bottom: 3px solid $color-border;
   }
 }
 
-.Work::before{
-  background-color: $work;
+.Work::before {
+  background-color: $color-work;
 }
-.Education::before{
-  background-color: $education;
+
+.Education::before {
+  background-color: $color-education;
 }
-.Hobby::before{
-  background-color: $hobby;
+
+.Hobby::before {
+  background-color: $color-hobby;
 }
-.Sport::before{
-  background-color: $sport;
+
+.Sport::before {
+  background-color: $color-sport;
 }
-.Other::before{
-  background-color: $other;
+
+.Other::before {
+  background-color: $color-other;
 }

@@ -9,7 +9,7 @@
   font-family: "PT Sans", sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
-  color: white;
+  color: $color-white;
 
   & + & {
     margin-left: 20px;
@@ -17,20 +17,20 @@
 }
 
 .Green {
-  background: $btn-green;
+  background: $color-btn-green;
   max-width: 125px;
 
   &:active,
   &:hover {
-    background: darken($btn-green, 5%);
+    background: darken($color-btn-green, 5%);
   }
 }
 
 .Blue {
-  background: $btn-blue;
+  background: $color-btn-blue;
 
   &:active,
   &:hover {
-    background: darken($btn-blue, 5%);
+    background: darken($color-btn-blue, 5%);
   }
 }

@@ -3,7 +3,7 @@
 .Cycle {
   margin-top: 80px;
   text-align: center;
-  color: $white;
+  color: $color-white;
   font-size: 1.25rem;
 }
 
@@ -20,15 +20,18 @@
   margin: 16px 0;
 }
 
-.TimeLineMark{
+.TimeLineMark {
+  position: relative;
   display: flex;
-  span{
+
+  span {
     flex-shrink: 0;
   }
+
   &::before {
     position: absolute;
     content: '';
-    background: $settings-dots;
+    background: $color-settings-dots;
     top: -9px;
     left: 50%;
     transform: translate(-50%, 50%);
@@ -38,9 +41,13 @@
   }
 }
 
+.ShiftedMark {
+  position: absolute;
+  transform: translateX(-50%);
+}
 
 .MarkWrapper {
-  color: $nepal;
+  color: $color-nepal;
 }
 
 .TopMarksWrapper {
@@ -48,15 +55,18 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+
   .TimeLineMark::before {
     top: initial;
     transform: translate(0, -50%);
     bottom: -9px;
   }
+
   .Start:before {
     left: initial;
   }
-  .End::before{
+
+  .End::before {
     left: initial;
     right: 0;
   }
@@ -68,13 +78,13 @@
 }
 
 .WorkIteration {
-  background: $work;
+  background: $color-work;
 }
 
 .ShortBreak {
-  background: $btn-blue;
+  background: $color-btn-blue;
 }
 
 .LongBreak {
-  background: $hobby;
+  background: $color-hobby;
 }
