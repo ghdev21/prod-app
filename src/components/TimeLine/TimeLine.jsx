@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import uuid from 'uuid/v1';
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import TimeLineSegment from './TimeLineSegment';
 import TimeLineMark from './TimeLineMark';
 import classes from './TimeLine.module.scss';
@@ -50,7 +49,7 @@ export default ({ state }) => {
   const markLines = getMappedList(timeIntervals);
 
   return (
-    <Auxiliary>
+    <Fragment>
       <h3 className={classes.Cycle}>Your cycle</h3>
       <div className={classes.TimeLineWrapper}>
         <div className={classes.TopMarksWrapper}>
@@ -63,6 +62,6 @@ export default ({ state }) => {
           {markLines}
         </div>
       </div>
-    </Auxiliary>
+    </Fragment>
   );
 };

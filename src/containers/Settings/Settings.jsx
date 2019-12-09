@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
 import PageHeading from '../../components/PageHeading/PageHeading';
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Tabs from '../../components/Tabs/Tabs';
 import SettingsRouter from '../../router/SettingsRouter';
 import {
@@ -12,12 +12,12 @@ import ResolveRoute from '../../hoc/ResolveRoutes/ResolveRoute';
 
 export default () => (
   <ResolveRoute>
-    <Auxiliary>
+    <Fragment>
       <PageHeading title="Settings" />
       <div className={classes.Wrapper}>
         <Tabs elements={[POMODOROS, CATEGORIES]} />
         <SettingsRouter />
       </div>
-    </Auxiliary>
+    </Fragment>
   </ResolveRoute>
 );

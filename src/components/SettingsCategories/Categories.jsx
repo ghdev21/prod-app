@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { withRouter } from 'react-router-dom';
-import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import SubTitle from '../SubTItle/SubTitle';
 import CategoriesList from './CategoryList/CategoriesList';
 import Button from '../UI/Button/Button';
@@ -13,7 +12,7 @@ export default withRouter(({ history }) => {
     history.push(`/${TASK_LIST}`);
   };
   return (
-    <Auxiliary>
+    <Fragment>
       <SubTitle subTitle="Categories list overview" />
       <CategoriesList />
       <div className={classes.ButtonWrapper}>
@@ -24,6 +23,6 @@ export default withRouter(({ history }) => {
           Go to Tasks
         </Button>
       </div>
-    </Auxiliary>
+    </Fragment>
   );
 });
