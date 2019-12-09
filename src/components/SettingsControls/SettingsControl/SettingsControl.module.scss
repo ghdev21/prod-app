@@ -43,6 +43,17 @@
   font-size: 1rem;
   border-bottom: 1px solid $nepal;
   padding-bottom: 5px;
+  &:hover{
+    border-color: $spray;
+  }
+  button {
+    &:hover{
+      color: $spray;
+    }
+    &:disabled{
+      color: darken($nepal, 30%);
+    }
+  }
 }
 
 .ControlDescription {

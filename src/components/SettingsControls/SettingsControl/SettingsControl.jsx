@@ -8,11 +8,13 @@ const SettingsControl = ({
   title,
   name,
   value,
+  minMax,
   text,
   onIncrement,
   onDecrement
 }) => {
   const settingsWord = name !== 'iteration' ? ' minutes' : ' iterations';
+  const { min, max } = minMax;
   const categoryName = [classes.Label];
   switch (name) {
     case ('iteration'):
@@ -35,6 +37,7 @@ const SettingsControl = ({
       <div className={classes.ControlsWrapper}>
         <button
           className="icon-minus"
+          disabled={value === min}
           onClick={(evt) => {
             evt.preventDefault();
             onDecrement(name);
@@ -43,6 +46,7 @@ const SettingsControl = ({
         <input className={classes.Input} type="text" value={value} readOnly name={name} />
         <button
           className="icon-add"
+          disabled={value === max}
           onClick={(evt) => {
             evt.preventDefault();
             onIncrement(name);

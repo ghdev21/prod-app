@@ -35,6 +35,7 @@ const SettingsControls = ({
                 key={uuid()}
                 title={control.title}
                 name={control.name}
+                minMax={{ min: control.min, max: control.max }}
                 value={control.value}
                 text={control.text}
               />
