@@ -1,5 +1,5 @@
 import { curry } from 'ramda';
-import convertNumToTIme from './convertNumToTIme';
+import convertNumToTIme from './convertNumToTime';
 
 export default ([work, iteration, short, long]) => {
   const map = curry((fn, arr) => arr.map(fn));

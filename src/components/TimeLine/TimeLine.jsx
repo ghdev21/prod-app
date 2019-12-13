@@ -4,7 +4,7 @@ import uuid from 'uuid/v1';
 import TimeLineSegment from './TimeLineSegment';
 import TimeLineMark from './TimeLineMark';
 import classes from './TimeLine.module.scss';
-import convertNumToTIme from '../../helpers/convertNumToTIme';
+import convertNumToTIme from '../../helpers/convertNumToTime';
 import getTimeLineData from '../../helpers/getTimeLineData';
 
 export default ({ state }) => {

@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes';
-import updateObj from '../utility';
 
 const initialState = {
   settingsArr: [],
@@ -19,23 +18,23 @@ const settingControlsHandler = (state, action, dir) => {
   }
   const newArr = [...state.settingsArr];
   newArr[settingsItem] = settingsItem;
-  return updateObj(state, { settingsArr: newArr });
+  return { ...state, settingsArr: newArr };
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.RESET_SETTINGS:
-      return updateObj(state, { settingsArr: [], loading: true });
+      return { ...state, settingsArr: [], loading: true };
     case actionTypes.SET_SETTINGS:
-      return updateObj(state, { settingsArr: action.settings, loading: false });
+      return { ...state, settingsArr: action.settings, loading: false };
     case actionTypes.INCREMENT_SETTINGS:
       return settingControlsHandler(state, action, 'incr');
     case actionTypes.DECREMENT_SETTINGS:
       return settingControlsHandler(state, action, 'decr');
     case actionTypes.SAVE_SETTINGS_START:
-      return updateObj(state, { loading: true });
+      return { ...state, loading: true };
     case actionTypes.SAVE_SETTINGS:
-      return updateObj(state, { loading: false });
+      return { ...state, loading: false };
     default:
       return state;
   }

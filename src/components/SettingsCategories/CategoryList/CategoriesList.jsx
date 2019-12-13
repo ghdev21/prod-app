@@ -1,19 +1,19 @@
 import React from 'react';
 
-import uuid from 'uuid';
 import CategoryItem from './CategoryItem';
 import classes from './CategoriesList.module.scss';
 
-export default (props) => {
-  const categories = [
-    'Work',
-    'Education',
-    'Hobby',
-    'Sport',
-    'Other',
-  ];
+const categories = [
+  'Work',
+  'Education',
+  'Hobby',
+  'Sport',
+  'Other',
+];
+
+export default () => {
   const categoryList = categories.map((category) => (
-    <CategoryItem key={uuid()}>
+    <CategoryItem key={category}>
       {category}
     </CategoryItem>
   ));
