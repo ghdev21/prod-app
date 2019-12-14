@@ -1,16 +1,20 @@
 @import "../../../../assets/styles/helpers/variables";
+
 .NavigationItem {
   & + & {
     margin-left: 30px;
   }
 }
+
 .NavigationLink {
   text-decoration: none;
-  color: $nepal;
-  &:hover{
-    color: $spray;
+  color: $color-nepal;
+
+  &:hover {
+    color: $color-spray;
   }
 }
-.Active, .Active:hover{
-  color: white;
+
+.Active, .Active:hover {
+  color: $color-white;
 }

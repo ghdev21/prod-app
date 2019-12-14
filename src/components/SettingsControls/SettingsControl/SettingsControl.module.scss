@@ -1,0 +1,81 @@
+@import "../../../assets/styles/helpers/variables";
+
+.SettingsControl {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  color: $color-nepal;
+  padding-left: 38px;
+}
+
+.Label {
+  position: relative;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: .875rem;
+  color: $color-white;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: -39px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+}
+
+.Work::before {
+  background: $color-work;
+}
+
+.Iteration::before {
+  background: $color-other;
+}
+
+.ShortBreak::before {
+  background: $color-education;
+}
+
+.LongBreak::before {
+  background: $color-hobby;
+}
+
+.ControlsWrapper {
+  display: flex;
+  margin-right: 82px;
+  max-width: 102px;
+  font-size: 1rem;
+  border-bottom: 1px solid $color-nepal;
+  padding-bottom: 5px;
+
+  &:hover {
+    border-color: $color-spray;
+  }
+
+  button {
+    &:hover {
+      color: $color-spray;
+    }
+
+    &:disabled {
+      color: darken($color-nepal, 30%);
+    }
+  }
+}
+
+.ControlDescription {
+  margin-top: 13px;
+  font-size: .875rem;
+
+  span {
+    color: $color-white;
+  }
+}
+
+.Input {
+  width: 100%;
+  text-align: center;
+  font-size: inherit;
+}
