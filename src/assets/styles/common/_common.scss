@@ -12,6 +12,7 @@ ul {
 }
 
 body {
+  margin: 0;
   background-color: $color-main-background;
   font-family: Roboto, sans-serif;
 }
@@ -42,4 +43,8 @@ p{
 }
 img {
   width: 100%;
+}
+
+main{
+  padding-top: 100px;
 }
