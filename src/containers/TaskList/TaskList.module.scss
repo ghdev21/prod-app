@@ -1,0 +1,15 @@
+@import "../../assets/styles/helpers/variables";
+
+.TaskList {
+  color: $color-white;
+}
+
+.AddTaskWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  section {
+    margin-right: 18px;
+    margin-bottom: 0;
+  }
+}

@@ -1,34 +1,28 @@
 @import "../../assets/styles/helpers/variables";
 
 .Header {
-  position: absolute;
-  width: 100%;
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  z-index: 1;
   background-color: $color-main-background;
-
-  .HeaderWrapper {
-    display: flex;
-    align-items: center;
-    height: 100px;
-
-    nav {
-      margin-left: auto;
-    }
-  }
 }
 
-.Fixed {
-  position: fixed;
-  justify-content: center;
-  left: 0;
-  right: 0;
-  z-index: 1;
+.Sticky {
+  height: 136px;
   box-shadow: 0px 5px 8.3px 1.7px fade_out(darken($color-shadow, 15%), 0);
+}
 
-  .HeaderWrapper {
-    height: 136px;
-    width: 100%;
-    max-width: 1186px;
+.HeaderWrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1186px;
+  flex-grow: 1;
+  margin: 0 auto;
+  height: 100px;
+
+  nav {
+    margin-left: auto;
   }
 }

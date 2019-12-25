@@ -5,10 +5,10 @@ import Header from '../../containers/Header/Header';
 import classes from './Layout.module.scss';
 
 export default withRouter(() => (
-  <div className={classes.Layout}>
+  <>
     <Header />
-    <main>
+    <main className={classes.Layout}>
       <Router />
     </main>
-  </div>
+  </>
 ));

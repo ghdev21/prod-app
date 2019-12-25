@@ -13,11 +13,13 @@ import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import settingsReducer from './store/reducers/settings';
+import taskListReducer from './store/reducers/taskList';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   settings: settingsReducer,
+  taskList: taskListReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(
