@@ -3,7 +3,12 @@ import classes from './TaskListMessages.module.scss';
 import Button from '../UI/Button/Button';
 import checkTaskState from '../../helpers/checkTaskState';
 
-export default ({skip, redirect, str, isFirstVisit }) => {
+export default ({
+  skip,
+  redirect,
+  str,
+  isFirstVisit,
+}) => {
   const properties = checkTaskState(str);
   return (
     <>
