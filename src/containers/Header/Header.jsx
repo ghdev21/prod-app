@@ -8,11 +8,9 @@ export default () => {
   const headerClasses = fixedHeader ? [classes.Header, classes.Sticky] : [classes.Header];
   const getScroll = () => {
     const isScroll = window.pageYOffset > 50;
-    if (isScroll !== fixedHeader) {
-      fixedHeaderHandler(isScroll);
-    }
+    fixedHeaderHandler(isScroll);
   };
-  useEffect(() => window.addEventListener('scroll', getScroll));
+  useEffect(() => window.addEventListener('scroll', getScroll), []);
   return (
     <header className={headerClasses.join(' ')}>
       <div className={classes.HeaderWrapper}>

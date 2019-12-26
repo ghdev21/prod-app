@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import uuid from 'uuid/v1';
 import TimeLineSegment from './TimeLineSegment';
@@ -49,7 +49,7 @@ export default ({ state }) => {
   const markLines = getMappedList(timeIntervals);
 
   return (
-    <Fragment>
+    <>
       <h3 className={classes.Cycle}>Your cycle</h3>
       <div className={classes.TimeLineWrapper}>
         <div className={classes.TopMarksWrapper}>
@@ -62,6 +62,6 @@ export default ({ state }) => {
           {markLines}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };

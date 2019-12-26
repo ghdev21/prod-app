@@ -8,10 +8,12 @@ export default (str) => {
   switch (str) {
     case 'firstVisit':
       return properties;
+
     case 'firstTask':
       properties.icon = tomatoFirst;
       properties.text = messages.firstTask;
       return properties;
+
     default:
       properties.icon = addTask;
       properties.text = messages.noTasks;

@@ -18,6 +18,7 @@ const TaskList = ({
   useEffect(() => {
     onInitTaskList();
   }, [onInitTaskList]);
+
   const redirectToSettings = () => {
     onSkipGreeting();
     history.push('/settings');

@@ -3,8 +3,10 @@ import axios from '../../axios';
 
 export const onGetTasks = (tasks) => ({
   type: actionTypes.GET_TASKS,
-  tasks,
-  isFirstTask: !Object.keys(tasks).length,
+  payload: {
+    tasks,
+    isFirstTask: !Object.keys(tasks).length,
+  },
 });
 
 export const onSkipGreeting = () => ({

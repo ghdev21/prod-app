@@ -11,7 +11,7 @@
 
 .Sticky {
   height: 136px;
-  box-shadow: 0px 5px 8.3px 1.7px fade_out(darken($color-shadow, 15%), 0);
+  box-shadow: 0px 5px 8.3px 1.7px darken($color-shadow, 15%);
 }
 
 .HeaderWrapper {
