@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { withRouter } from 'react-router-dom';
 import SubTitle from '../SubTItle/SubTitle';
@@ -12,7 +12,7 @@ export default withRouter(({ history }) => {
     history.push(`/${TASK_LIST}`);
   };
   return (
-    <Fragment>
+    <>
       <SubTitle subTitle="Categories list overview" />
       <CategoriesList />
       <div className={classes.ButtonWrapper}>
@@ -23,6 +23,6 @@ export default withRouter(({ history }) => {
           Go to Tasks
         </Button>
       </div>
-    </Fragment>
+    </>
   );
 });

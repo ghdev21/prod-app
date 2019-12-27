@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import SubTitle from '../SubTItle/SubTitle';
 import SettingsControls from '../SettingsControls/SettingsControls';
 
-export default (props) => (
-  <Fragment>
+export default () => (
+  <>
     <SubTitle subTitle="Pomodoros settings" />
     <SettingsControls />
-  </Fragment>
+  </>
 );
