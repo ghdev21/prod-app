@@ -8,4 +8,8 @@ export {
 export {
   onInitTaskList,
   onSkipGreeting,
+  onOpenTaskListModal,
+  onCLoseTaskListModal,
+  onChangeTaskListModal,
+  onStartSaveTask,
 } from './taskList';

@@ -1,0 +1,246 @@
+@import "src/assets/styles/helpers/variables";
+
+.Form {
+  position: relative;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  height: 100%;
+  margin: auto;
+  padding: 45px 40px 0;
+  background-color: $color-main-background;
+}
+
+.ButtonsWrapper {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: $color-nepal;
+}
+.Button {
+  font-size: 1.25rem;
+  & + & {
+    margin-left: 15px;
+  }
+}
+
+
+.RadioTitle {
+  margin-bottom: 15px;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: .875rem;
+  font-weight: 400;
+}
+
+.AddTaskTitle {
+  width: max-content;
+  margin: 0 auto 20px;
+  font-size: 1.75rem;
+}
+
+.Label {
+  display: flex;
+  text-transform: uppercase;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  input {
+    display: block;
+    font-size: 1rem;
+    color: $color-nepal;
+    border-bottom: 1px solid $color-border;
+
+    &::placeholder {
+      color: inherit;
+    }
+  }
+}
+
+.RadioWrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .RadioTitle {
+    text-transform: capitalize;
+  }
+  label {
+    position: relative;
+    justify-content: space-between;
+    flex-direction: initial;
+    margin-right: 5px;
+    padding-left: 25px;
+
+    .RadioInput {
+      display: none;
+
+      & ~ span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $color-nepal;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+
+      &:checked {
+        & ~ span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:before {
+            position: absolute;
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px $color-main-background;
+          }
+        }
+
+        & ~ .Work {
+          background-color: $color-work;
+        }
+
+        & ~ .Education {
+          background-color: $color-education;
+        }
+
+        & ~ .Hobby {
+          background-color: $color-hobby;
+        }
+
+        & ~ .Sport {
+          background-color: $color-sport;
+        }
+
+        & ~ .Other {
+          background-color: $color-other;
+        }
+
+        & ~ .Urgent {
+          background-color: $color-btn-red;
+        }
+
+        & ~ .High {
+          background-color: $color-high;
+        }
+
+        & ~ .Middle {
+          background-color: $color-middle;
+        }
+
+        & ~ .Low {
+          background-color: $color-btn-green;
+        }
+      }
+    }
+
+    &:hover {
+      .Work {
+        background-color: $color-work;
+      }
+
+      .Education {
+        background-color: $color-education;
+      }
+
+      .Hobby {
+        background-color: $color-hobby;
+      }
+
+      .Sport {
+        background-color: $color-sport;
+      }
+
+      .Other {
+        background-color: $color-other;
+      }
+
+      .Urgent {
+        background-color: $color-btn-red;
+      }
+
+      .High {
+        background-color: $color-high;
+      }
+
+      .Middle {
+        background-color: $color-middle;
+      }
+
+      .Low {
+        background-color: $color-btn-green;
+      }
+    }
+  }
+}
+
+.EstimationBlock {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.EstimationRadioWrapper {
+  display: flex;
+  margin-bottom: 10px;
+
+  &:hover .RadioInput ~ span {
+    background-image: url("../../assets/images/fill_tomato.svg");
+  }
+
+  .RadioTitle {
+    display: none;
+  }
+
+  .Label {
+    &:not(:last-child) {
+      padding-right: 10px;
+    }
+  }
+
+  .RadioInput {
+    display: none;
+
+    & ~ span {
+      height: 22px;
+      width: 22px;
+      background-image: url("../../assets/images/fill_tomato.svg");
+      background-repeat: no-repeat;
+    }
+  }
+
+  label:hover ~ label {
+    .RadioInput ~ span {
+      background-image: url("../../assets/images/empty-tomato.svg");
+    }
+  }
+}
+
+.CheckedTomato {
+  .RadioInput + span {
+    background-image: url("../../assets/images/fill_tomato.svg");
+  }
+}
+
+.CheckedTomato ~ label {
+  .RadioInput + span {
+    background-image: url("../../assets/images/empty-tomato.svg");
+  }
+}
+
+.Category {
+  margin-bottom: 30px;
+  border-bottom: 1px solid $color-border;
+  color: $color-nepal;
+  .Selected {
+    color: $color-white;
+  }
+  .Label {
+    margin-bottom: 0;
+  }
+}

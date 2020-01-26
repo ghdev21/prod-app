@@ -6,6 +6,8 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 import TaskListMessages from '../../components/TaskListMessages/TaskListMessages';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Tasks from '../../components/Tasks/Tasks';
+import Modal from '../../components/UI/Modal/Modal';
+import TaskForm from '../../components/TaskForm/TaskForm';
 import classes from './TaskList.module.scss';
 import * as action from '../../store/actions/index';
 
@@ -14,6 +16,7 @@ const TaskList = ({
   taskList,
   onInitTaskList,
   onSkipGreeting,
+  onOpenTaskListModal,
 }) => {
   useEffect(() => {
     onInitTaskList();
@@ -37,14 +40,19 @@ const TaskList = ({
       />
     );
   }
-
   return (
     <div className={classes.TaskList}>
       <div className={classes.AddTaskWrapper}>
         <PageHeading title="Daily Task List" />
-        <AddTaskBtn />
+        <AddTaskBtn showModal={onOpenTaskListModal} />
       </div>
       {content}
+      {taskList.isModalOpen
+        && (
+          <Modal>
+            <TaskForm />
+          </Modal>
+        )}
     </div>
   );
 };
@@ -56,6 +64,7 @@ const mapStateToProps = ({ taskList }) => ({
 const mapDispatchToProps = (dispatch) => ({
   onInitTaskList: () => dispatch(action.onInitTaskList()),
   onSkipGreeting: () => dispatch(action.onSkipGreeting()),
+  onOpenTaskListModal: () => dispatch(action.onOpenTaskListModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TaskList));
