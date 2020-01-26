@@ -8,7 +8,7 @@ import {
   ON_SAVE_TASK_START,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
-import taskFormOpts from '../../constants/TaskFormOpts';
+import taskForm from '../../constants/TaskFormOpts';
 
 const initialState = {
   tasks: {},
@@ -16,7 +16,7 @@ const initialState = {
   isFirstTask: null,
   isModalOpen: false,
   loading: false,
-  taskFormOpts,
+  taskFormOpts: [],
 };
 
 const updateFormField = (state, action) => {
@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
       return { ...state, isFirstVisit: false };
 
     case OPEN_TASK_LIST_MODAL:
-      return { ...state, isModalOpen: true };
+      return { ...state, taskFormOpts: taskForm(), isModalOpen: true };
 
     case CLOSE_TASK_LIST_MODAL:
       return { ...state, isModalOpen: false };

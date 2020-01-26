@@ -4,7 +4,7 @@ const getFormattedDate = (date) => {
   const day = date.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
-export default [
+export default () => [
   {
     labelName: 'Title',
     placeholder: 'Add title here',
