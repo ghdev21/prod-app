@@ -19,7 +19,7 @@ const initialState = {
   taskFormOpts,
 };
 
-const func = (state, action) => {
+const updateFormField = (state, action) => {
   const { evt, id, prop } = action;
   const { value } = evt.target;
   const index = state.taskFormOpts.findIndex((item) => item.labelName === id);
@@ -49,7 +49,7 @@ export default (state = initialState, action) => {
       return { ...state, isModalOpen: false };
 
     case ON_CHANGE_TASK_LIST_MODAL:
-      return func(state, action.payload);
+      return updateFormField(state, action.payload);
 
     case ON_SAVE_TASK_START:
       return { ...state, loading: true };
