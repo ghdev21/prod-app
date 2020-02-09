@@ -23,13 +23,10 @@ const Form = ({
 }) => {
   const { taskFormOpts, editableTask } = taskList;
 
-  const cancelHandler = (evt) => {
-    evt.preventDefault();
+  const cancelHandler = () => {
     cLoseTaskListModal();
   };
-  const saveHandler = (evt) => {
-    evt.preventDefault();
-
+  const saveHandler = () => {
     const data = taskFormOpts.map(getValueFromField);
     const taskData = data.reduce((obj, nextObj) => ({ ...obj, ...nextObj }));
     const dataToSend = {
@@ -67,7 +64,7 @@ const Form = ({
       <div className={classes.ButtonsWrapper}>
         {buttons.map((item) => (
           <button
-            key={item}
+            key={item.id}
             className={item.classes}
             onClick={item.handler}
           />
