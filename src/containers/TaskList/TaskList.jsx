@@ -1,39 +1,40 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AddTaskBtn from '../../components/AddTask/AddTaskBtn';
+import AddTaskBtn from '../../components/AddTask/PlusBtn';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import TaskListMessages from '../../components/TaskListMessages/TaskListMessages';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Tasks from '../../components/Tasks/Tasks';
 import Modal from '../../components/UI/Modal/Modal';
-import TaskForm from '../../components/TaskForm/TaskForm';
+import TaskForm from '../../components/TaskForm/Form';
 import classes from './TaskList.module.scss';
 import * as action from '../../store/actions/index';
 
 const TaskList = ({
   history,
   taskList,
-  onInitTaskList,
-  onSkipGreeting,
-  onOpenTaskListModal,
+  initTaskList,
+  skipGreeting,
+  openTaskListModal,
 }) => {
   useEffect(() => {
-    onInitTaskList();
-  }, [onInitTaskList]);
+    initTaskList();
+  }, [initTaskList]);
 
   const redirectToSettings = () => {
-    onSkipGreeting();
+    skipGreeting();
     history.push('/settings');
   };
   let content = <Spinner />;
-  if (Object.keys(taskList.tasks).length) {
+
+  if (taskList.tasks.globalList) {
     content = <Tasks />;
   }
   if (taskList.isFirstTask || taskList.isFirstVisit) {
     content = (
       <TaskListMessages
-        skip={onSkipGreeting}
+        skip={skipGreeting}
         redirect={redirectToSettings}
         str={taskList.isFirstVisit ? 'firstVisit' : 'firstTask'}
         isFirstVisit={taskList.isFirstVisit}
@@ -44,7 +45,7 @@ const TaskList = ({
     <div className={classes.TaskList}>
       <div className={classes.AddTaskWrapper}>
         <PageHeading title="Daily Task List" />
-        <AddTaskBtn showModal={onOpenTaskListModal} />
+        <AddTaskBtn showModal={openTaskListModal} />
       </div>
       {content}
       {taskList.isModalOpen
@@ -62,9 +63,9 @@ const mapStateToProps = ({ taskList }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onInitTaskList: () => dispatch(action.onInitTaskList()),
-  onSkipGreeting: () => dispatch(action.onSkipGreeting()),
-  onOpenTaskListModal: () => dispatch(action.onOpenTaskListModal()),
+  initTaskList: () => dispatch(action.initTaskList()),
+  skipGreeting: () => dispatch(action.skipGreeting()),
+  openTaskListModal: () => dispatch(action.openTaskListModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TaskList));

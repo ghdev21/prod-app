@@ -5,8 +5,6 @@
   width: 500px;
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  height: 100%;
   margin: auto;
   padding: 45px 40px 0;
   background-color: $color-main-background;
@@ -15,16 +13,28 @@
 .ButtonsWrapper {
   position: absolute;
   top: 15px;
-  right: 15px;
+  left: 15px;
+  display: flex;
+  justify-content: flex-end;
+  width: calc(100% - (80px - 45px));
   color: $color-nepal;
 }
+
 .Button {
   font-size: 1.25rem;
+
+  &:hover {
+    color: $color-spray;
+  }
+
   & + & {
     margin-left: 15px;
   }
 }
 
+.DeleteButton {
+  margin-right: auto;
+}
 
 .RadioTitle {
   margin-bottom: 15px;
@@ -32,6 +42,7 @@
   text-transform: uppercase;
   font-size: .875rem;
   font-weight: 400;
+  color: $color-white;
 }
 
 .AddTaskTitle {
@@ -49,11 +60,11 @@
   input {
     display: block;
     font-size: 1rem;
-    color: $color-nepal;
+    color: $color-white;
     border-bottom: 1px solid $color-border;
 
     &::placeholder {
-      color: inherit;
+      color: $color-nepal;
     }
   }
 }
@@ -64,11 +75,19 @@
 
   .RadioTitle {
     text-transform: capitalize;
+    color: $color-nepal;
+
   }
+
+  .Selected .RadioTitle {
+    color: $color-white;
+  }
+
   label {
     position: relative;
     justify-content: space-between;
     flex-direction: initial;
+    cursor: pointer;
     margin-right: 5px;
     padding-left: 25px;
 
@@ -140,6 +159,10 @@
     }
 
     &:hover {
+      &:not(.Selected) .RadioTitle {
+        color: $color-spray;
+      }
+
       .Work {
         background-color: $color-work;
       }
@@ -198,6 +221,10 @@
   }
 
   .Label {
+    &:hover {
+      cursor: pointer;
+    }
+
     &:not(:last-child) {
       padding-right: 10px;
     }
@@ -236,10 +263,7 @@
 .Category {
   margin-bottom: 30px;
   border-bottom: 1px solid $color-border;
-  color: $color-nepal;
-  .Selected {
-    color: $color-white;
-  }
+
   .Label {
     margin-bottom: 0;
   }

@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
     case actionTypes.DECREMENT_SETTINGS:
       return settingControlsHandler(state, action, 'decr');
 
-    case actionTypes.SAVE_SETTINGS_START:
+    case actionTypes.START_SAVE_SETTINGS:
       return { ...state, loading: true };
 
     case actionTypes.SAVE_SETTINGS:

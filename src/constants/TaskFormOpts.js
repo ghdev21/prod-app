@@ -4,25 +4,32 @@ const getFormattedDate = (date) => {
   const day = date.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
-export default () => [
+export default (
+  title = '',
+  desc = '',
+  category = 'Work',
+  date = getFormattedDate(new Date()),
+  estimation = '1',
+  priority = 'Urgent',
+) => [
   {
-    labelName: 'Title',
+    labelName: 'title',
     placeholder: 'Add title here',
     type: 'text',
-    value: '',
+    value: title,
   },
   {
-    labelName: 'Description',
+    labelName: 'description',
     placeholder: 'Add description here',
     type: 'text',
-    value: '',
+    value: desc,
   },
   {
-    labelName: 'Category',
+    labelName: 'category',
     placeholder: null,
     type: 'radio',
-    value: 'Work',
-    checked: 'Work',
+    value: category,
+    checked: category,
     controlsList: [
       'Work',
       'Education',
@@ -32,22 +39,22 @@ export default () => [
     ],
   },
   {
-    labelName: 'Deadline',
+    labelName: 'deadline',
     type: 'date',
-    value: getFormattedDate(new Date()),
+    value: date,
   },
   {
-    labelName: 'Estimation',
+    labelName: 'estimation',
     type: 'radio',
-    value: '1',
-    checked: '1',
+    value: estimation,
+    checked: estimation,
     controlsList: ['1', '2', '3', '4', '5'],
   },
   {
-    labelName: 'Priority',
+    labelName: 'priority',
     type: 'radio',
-    value: 'Urgent',
-    checked: 'Urgent',
+    value: priority,
+    checked: priority,
     controlsList: ['Urgent', 'High', 'Middle', 'Low'],
   },
 ];

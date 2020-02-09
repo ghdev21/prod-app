@@ -26,7 +26,7 @@ export const incrementSettings = (name) => ({
 });
 
 export const updateSettings = (settings) => (dispatch) => {
-  dispatch({ type: actionTypes.SAVE_SETTINGS_START });
+  dispatch({ type: actionTypes.START_SAVE_SETTINGS });
   axios.put('/settings.json', settings)
     .then(() => dispatch(saveSettings()))
     .catch((err) => console.log(err));

@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import classes from './Backdrop.module.scss';
 import * as action from '../../../store/actions';
 
-const Backdrop = ({ onCLoseTaskListModal }) => (
+const Backdrop = ({ onCLose }) => (
     <div
       className={classes.Backdrop}
-      onClick={onCLoseTaskListModal}
+      onClick={onCLose}
     />
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  onCLoseTaskListModal: () => dispatch(action.onCLoseTaskListModal()),
+  onCLose: () => dispatch(action.cLoseTaskListModal()),
 });
 
 export default connect(null, mapDispatchToProps)(Backdrop);

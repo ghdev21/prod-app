@@ -1,43 +1,40 @@
 import {
   CLOSE_TASK_LIST_MODAL,
   GET_TASKS,
-  ON_CHANGE_TASK_LIST_MODAL,
+  CHANGE_TASK_LIST_MODAL,
   OPEN_TASK_LIST_MODAL,
   SKIP_GREETING,
-  ON_SAVE_TASK,
-  ON_SAVE_TASK_START,
+  SAVE_TASK,
+  START_SAVE_TASK,
+  START_INIT_TASKS,
+  EDIT_TASK,
+  UPDATE_TASK,
+  START_UPDATE_TASK,
+  START_DELETE_TASK,
+  DELETE_TASK,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
 import taskForm from '../../constants/TaskFormOpts';
+import getTasks from '../utils/getTasks';
+import setFields from '../utils/setFields';
+import updateField from '../utils/updateField';
 
 const initialState = {
-  tasks: {},
+  tasks: {
+    globalList: null,
+  },
   isFirstVisit: checkFirstVisit(),
   isFirstTask: null,
   isModalOpen: false,
+  editableTask: null,
   loading: false,
   taskFormOpts: [],
-};
-
-const updateFormField = (state, action) => {
-  const { evt, id, prop } = action;
-  const { value } = evt.target;
-  const index = state.taskFormOpts.findIndex((item) => item.labelName === id);
-  const newState = [...state.taskFormOpts];
-
-  newState[index].value = value;
-
-  if (prop === 'checked') {
-    newState[index][prop] = value;
-  }
-
-  return { ...state, taskFormOpts: newState };
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_TASKS:
-      return { ...state, tasks: action.payload.tasks, isFirstTask: action.payload.isFirstTask };
+      return getTasks(state, action);
 
     case SKIP_GREETING:
       return { ...state, isFirstVisit: false };
@@ -46,16 +43,34 @@ export default (state = initialState, action) => {
       return { ...state, taskFormOpts: taskForm(), isModalOpen: true };
 
     case CLOSE_TASK_LIST_MODAL:
-      return { ...state, isModalOpen: false };
+      return { ...state, isModalOpen: false, editableTask: false };
 
-    case ON_CHANGE_TASK_LIST_MODAL:
-      return updateFormField(state, action.payload);
+    case CHANGE_TASK_LIST_MODAL:
+      return updateField(state, action.payload);
 
-    case ON_SAVE_TASK_START:
+    case START_SAVE_TASK:
       return { ...state, loading: true };
 
-    case ON_SAVE_TASK:
+    case SAVE_TASK:
       return { ...state, loading: false, isModalOpen: false };
+
+    case UPDATE_TASK:
+      return { ...state, loading: false, isModalOpen: false, editableTask: null };
+
+    case START_UPDATE_TASK:
+      return { ...state, loading: true };
+
+    case START_INIT_TASKS:
+      return { ...state, loading: true };
+
+    case EDIT_TASK:
+      return setFields(state, action.payload);
+
+    case START_DELETE_TASK:
+      return { ...state, loading: true };
+
+    case DELETE_TASK:
+      return { ...state, loading: false, isModalOpen: false, editableTask: null };
 
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './AddTaskBtn.module.scss';
+import classes from './PlusBtn.module.scss';
 
 export default ({ showModal }) => (
   <button onClick={showModal} className={classes.Button}>
