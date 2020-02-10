@@ -1,5 +1,4 @@
 import React from 'react';
-
 import classes from './PlusBtn.module.scss';
 
 export default ({ showModal }) => (

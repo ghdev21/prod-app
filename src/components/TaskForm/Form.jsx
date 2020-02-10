@@ -8,14 +8,13 @@ import formButtons from '../../helpers/generateFormButtons';
 import TaskFormField from './Field';
 
 const getValueFromField = (data) => {
-  const { labelName } = data;
-  let { value } = data;
+  const { labelName, value } = data;
 
   return { [labelName]: value };
 };
 
 const Form = ({
-  cLoseTaskListModal,
+  closeTaskListModal,
   taskList,
   startSaveTask,
   startUpdateTask,
@@ -24,7 +23,7 @@ const Form = ({
   const { taskFormOpts, editableTask } = taskList;
 
   const cancelHandler = () => {
-    cLoseTaskListModal();
+    closeTaskListModal();
   };
   const saveHandler = () => {
     const data = taskFormOpts.map(getValueFromField);
@@ -87,7 +86,7 @@ const mapStateToProps = ({ taskList }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cLoseTaskListModal: () => dispatch(action.cLoseTaskListModal()),
+  closeTaskListModal: () => dispatch(action.closeTaskListModal()),
   startSaveTask: (data) => dispatch(action.startSaveTask(data)),
   startUpdateTask: (data, id) => dispatch(action.startUpdateTask(data, id)),
   startDeleteTask: (id) => dispatch(action.startDeleteTask(id)),

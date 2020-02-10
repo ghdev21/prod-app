@@ -22,7 +22,7 @@ export const openTaskListModal = () => ({
   type: actionTypes.OPEN_TASK_LIST_MODAL,
 });
 
-export const cLoseTaskListModal = () => ({
+export const closeTaskListModal = () => ({
   type: actionTypes.CLOSE_TASK_LIST_MODAL,
 });
 
@@ -51,7 +51,7 @@ export const deleteTask = () => ({
 });
 
 export const startSaveTask = (data) => (dispatch) => {
-  dispatch({ type: actionTypes.START_SAVE_TASK });
+  dispatch({ type: actionTypes.START_SAVING_TASK });
   axios.post('tasks/globalList.json', data)
     .then((res) => {
       dispatch(saveTask(res));
@@ -60,7 +60,7 @@ export const startSaveTask = (data) => (dispatch) => {
 };
 
 export const startUpdateTask = (data, id) => (dispatch) => {
-  dispatch({ type: actionTypes.START_UPDATE_TASK });
+  dispatch({ type: actionTypes.START_UPDATING_TASK });
   axios.put(`tasks/globalList/${id}.json`, data)
     .then((res) => {
       dispatch(updateTask(res));
@@ -69,7 +69,7 @@ export const startUpdateTask = (data, id) => (dispatch) => {
 };
 
 export const startDeleteTask = (id) => (dispatch) => {
-  dispatch({ type: actionTypes.START_DELETE_TASK });
+  dispatch({ type: actionTypes.START_DELETING_TASK });
   axios.delete(`tasks/globalList/${id}.json`)
     .then(() => {
       dispatch(deleteTask());

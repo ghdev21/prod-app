@@ -5,12 +5,12 @@ import {
   OPEN_TASK_LIST_MODAL,
   SKIP_GREETING,
   SAVE_TASK,
-  START_SAVE_TASK,
+  START_SAVING_TASK,
   START_INIT_TASKS,
   EDIT_TASK,
   UPDATE_TASK,
-  START_UPDATE_TASK,
-  START_DELETE_TASK,
+  START_UPDATING_TASK,
+  START_DELETING_TASK,
   DELETE_TASK,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
     case CHANGE_TASK_LIST_MODAL:
       return updateField(state, action.payload);
 
-    case START_SAVE_TASK:
+    case START_SAVING_TASK:
       return { ...state, loading: true };
 
     case SAVE_TASK:
@@ -57,7 +57,7 @@ export default (state = initialState, action) => {
     case UPDATE_TASK:
       return { ...state, loading: false, isModalOpen: false, editableTask: null };
 
-    case START_UPDATE_TASK:
+    case START_UPDATING_TASK:
       return { ...state, loading: true };
 
     case START_INIT_TASKS:
@@ -66,7 +66,7 @@ export default (state = initialState, action) => {
     case EDIT_TASK:
       return setFields(state, action.payload);
 
-    case START_DELETE_TASK:
+    case START_DELETING_TASK:
       return { ...state, loading: true };
 
     case DELETE_TASK:

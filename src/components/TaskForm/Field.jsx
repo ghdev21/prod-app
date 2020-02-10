@@ -12,14 +12,14 @@ const Field = (props) => {
     const additionalClass = isEstimation
       ? classes.EstimationBlock
       : null;
-    const radionWrapper = isEstimation
+    const radioWrapper = isEstimation
       ? classes.EstimationRadioWrapper
       : classes.RadioWrapper;
 
     content = (
       <div className={[additionalClass, classes.Category].join(' ')}>
         <h4 className={classes.RadioTitle}>{props.labelName}</h4>
-        <div className={radionWrapper}>
+        <div className={radioWrapper}>
           {props.controlsList.map((radio) => generateField({ ...props, radio }))}
         </div>
       </div>

@@ -9,7 +9,7 @@ export {
   initTaskList,
   skipGreeting,
   openTaskListModal,
-  cLoseTaskListModal,
+  closeTaskListModal,
   changeTaskListModal,
   startSaveTask,
   startUpdateTask,

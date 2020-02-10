@@ -11,7 +11,7 @@ const Backdrop = ({ onCLose }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  onCLose: () => dispatch(action.cLoseTaskListModal()),
+  onCLose: () => dispatch(action.closeTaskListModal()),
 });
 
 export default connect(null, mapDispatchToProps)(Backdrop);
