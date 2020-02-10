@@ -4,7 +4,7 @@ import classes from './Form.module.scss';
 import * as action from '../../store/actions';
 import generateField from '../../helpers/generateField';
 
-const Field = React.memo((props) => {
+const Field = (props) => {
   const isEstimation = props.labelName === 'estimation';
   let content = generateField(props);
 
@@ -26,7 +26,7 @@ const Field = React.memo((props) => {
     );
   }
   return content;
-});
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeTaskListModal: (evt, id, prop) => dispatch(action.changeTaskListModal(evt, id, prop)),
