@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AddTaskBtn from '../../components/AddTask/PlusBtn';
+import PlusBtn from '../../components/AddTask/PlusBtn';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import TaskListMessages from '../../components/TaskListMessages/TaskListMessages';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -45,7 +45,7 @@ const TaskList = ({
     <div className={classes.TaskList}>
       <div className={classes.AddTaskWrapper}>
         <PageHeading title="Daily Task List" />
-        <AddTaskBtn showModal={openTaskListModal} />
+        <PlusBtn showModal={openTaskListModal} />
       </div>
       {content}
       {taskList.isModalOpen

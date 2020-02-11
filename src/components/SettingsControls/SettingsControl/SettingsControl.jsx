@@ -7,8 +7,8 @@ export default ({
   value,
   range,
   text,
-  increment,
-  decrement,
+  onIncrement,
+  onDecrement,
 }) => {
   const settingsWord = name !== 'iteration' ? ' minutes' : ' iterations';
   const { min, max } = range;
@@ -37,7 +37,7 @@ export default ({
           disabled={value === min}
           onClick={(evt) => {
             evt.preventDefault();
-            decrement(name);
+            onDecrement(name);
           }}
         />
         <input className={classes.Input} type="text" value={value} readOnly name={name} />
@@ -46,7 +46,7 @@ export default ({
           disabled={value === max}
           onClick={(evt) => {
             evt.preventDefault();
-            increment(name);
+            onIncrement(name);
           }}
         />
       </div>

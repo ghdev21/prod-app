@@ -39,8 +39,8 @@ const SettingsControls = ({
                 range={{ min: control.min, max: control.max }}
                 value={control.value}
                 text={control.text}
-                increment={onIncrement}
-                decrement={onDecrement}
+                onIncrement={onIncrement}
+                onDecrement={onDecrement}
               />
             ))}
           </form>
