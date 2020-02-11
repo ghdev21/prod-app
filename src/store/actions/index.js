@@ -6,6 +6,13 @@ export {
   resetSettings,
 } from './settings';
 export {
-  onInitTaskList,
-  onSkipGreeting,
+  initTaskList,
+  skipGreeting,
+  openTaskListModal,
+  closeTaskListModal,
+  changeTaskListModal,
+  startSaveTask,
+  startUpdateTask,
+  startDeleteTask,
+  editTask,
 } from './taskList';

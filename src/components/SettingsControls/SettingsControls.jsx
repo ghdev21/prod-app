@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import uuid from 'uuid/v1';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,6 +17,8 @@ const SettingsControls = ({
   onInitSettings,
   onSaveSettings,
   onResetSettings,
+  onIncrement,
+  onDecrement,
 }) => {
   useEffect(() => {
     onInitSettings();
@@ -35,9 +36,11 @@ const SettingsControls = ({
                 key={uuid()}
                 title={control.title}
                 name={control.name}
-                minMax={{ min: control.min, max: control.max }}
+                range={{ min: control.min, max: control.max }}
                 value={control.value}
                 text={control.text}
+                onIncrement={onIncrement}
+                onDecrement={onDecrement}
               />
             ))}
           </form>
@@ -61,6 +64,8 @@ const mapDispatchToProps = (dispatch) => ({
   onInitSettings: () => dispatch(actions.initSettings()),
   onSaveSettings: (settings) => dispatch(actions.updateSettings(settings)),
   onResetSettings: () => dispatch(actions.resetSettings()),
+  onIncrement: (name) => dispatch(actions.incrementSettings(name)),
+  onDecrement: (name) => dispatch(actions.decrementSettings(name)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)((withRouter(SettingsControls)));
