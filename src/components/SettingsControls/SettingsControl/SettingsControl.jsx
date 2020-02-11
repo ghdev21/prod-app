@@ -1,20 +1,17 @@
 import React from 'react';
-
-import { connect } from 'react-redux';
 import classes from './SettingsControl.module.scss';
-import * as actions from '../../../store/actions';
 
-const SettingsControl = ({
+export default ({
   title,
   name,
   value,
-  minMax,
+  range,
   text,
   onIncrement,
-  onDecrement
+  onDecrement,
 }) => {
   const settingsWord = name !== 'iteration' ? ' minutes' : ' iterations';
-  const { min, max } = minMax;
+  const { min, max } = range;
   const categoryName = [classes.Label];
   switch (name) {
     case ('iteration'):
@@ -60,10 +57,3 @@ const SettingsControl = ({
     </div>
   );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  onIncrement: (name) => dispatch(actions.incrementSettings(name)),
-  onDecrement: (name) => dispatch(actions.decrementSettings(name)),
-});
-
-export default connect(null, mapDispatchToProps)((SettingsControl));
