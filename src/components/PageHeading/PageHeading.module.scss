@@ -1,0 +1,14 @@
+@import "../../assets/styles/helpers/variables";
+
+.HeadingContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $color-white;
+  margin-bottom: 22px;
+}
+
+.Title {
+  font-size: $font-size-heading1;
+  font-weight: 500;
+}

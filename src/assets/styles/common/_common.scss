@@ -1,0 +1,46 @@
+@import "../base/typography";
+@import "../helpers/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  background-color: $color-main-background;
+  font-family: Roboto, sans-serif;
+}
+
+input,
+button {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+  margin: 0;
+}
+img {
+  width: 100%;
+}

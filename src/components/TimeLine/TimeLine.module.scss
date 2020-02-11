@@ -1,0 +1,90 @@
+@import "../../assets/styles/helpers/variables";
+
+.Cycle {
+  margin-top: 80px;
+  text-align: center;
+  color: $color-white;
+  font-size: 1.25rem;
+}
+
+.TimeLineWrapper {
+  display: flex;
+  flex-flow: column;
+}
+
+.TimeLine {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  position: relative;
+  margin: 16px 0;
+}
+
+.TimeLineMark {
+  position: relative;
+  display: flex;
+
+  span {
+    flex-shrink: 0;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    background: $color-settings-dots;
+    top: -9px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+  }
+}
+
+.ShiftedMark {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.MarkWrapper {
+  color: $color-nepal;
+}
+
+.TopMarksWrapper {
+  @extend .MarkWrapper;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .TimeLineMark::before {
+    top: initial;
+    transform: translate(0, -50%);
+    bottom: -9px;
+  }
+
+  .Start:before {
+    left: initial;
+  }
+
+  .End::before {
+    left: initial;
+    right: 0;
+  }
+}
+
+.BottomMarksWrapper {
+  @extend .MarkWrapper;
+  position: relative;
+}
+
+.WorkIteration {
+  background: $color-work;
+}
+
+.ShortBreak {
+  background: $color-btn-blue;
+}
+
+.LongBreak {
+  background: $color-hobby;
+}

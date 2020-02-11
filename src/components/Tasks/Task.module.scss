@@ -1,0 +1,160 @@
+@import "../../assets/styles/helpers/variables";
+
+.GlobalList {
+  margin-top: 70px;
+}
+
+.Task {
+  display: flex;
+  min-height: 90px;
+  background-color: $color-white;
+  color: $color-gray;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.Category {
+  border-left: 10px solid;
+}
+
+.Education {
+  border-color: $color-education;
+}
+
+.Sport {
+  border-color: $color-sport;
+}
+
+.Hobby {
+  border-color: $color-hobby;
+}
+
+.Work {
+  border-color: $color-work;
+}
+
+.Other {
+  border-color: $color-other;
+}
+
+.Date {
+  width: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 1.68rem;
+  color: $color-urgent;
+}
+
+.Month {
+  font-size: .68rem;
+}
+
+.Urgent {
+  color: $color-urgent;
+}
+
+.High {
+  color: $color-high;
+}
+
+.Middle {
+  color: $color-middle;
+}
+
+.Low {
+  color: $color-btn-green;
+}
+
+.TaskInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-right: 10px;
+  font-size: 1.18rem;
+}
+
+.Priority {
+  position: relative;
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: $color-white;
+  font-size: 1.5rem;
+
+  &:hover {
+    .Estimation {
+      display: none;
+    }
+
+    .TomatoIcon:before {
+      content: '\e90e';
+    }
+  }
+
+  &.Urgent {
+    background-color: $color-urgent;
+
+    &:hover {
+      background-color: darken($color-urgent, 10%);
+    }
+  }
+
+  &.High {
+    background-color: $color-high;
+
+    &:hover {
+      background-color: darken($color-high, 10%);
+    }
+  }
+
+  &.Middle {
+    background-color: $color-middle;
+
+    &:hover {
+      background-color: darken($color-middle, 10%);
+    }
+  }
+
+  &.Low {
+    background-color: $color-btn-green;
+
+    &:hover {
+      background-color: darken($color-btn-green, 10%);
+    }
+  }
+}
+
+.TomatoIcon {
+  position: absolute;
+  font-size: 3.75rem;
+}
+
+.TaskButtons {
+  display: flex;
+  margin-right: 30px;
+  flex-direction: column;
+  justify-content: center;
+  color: $color-light-gray;
+}
+
+.TaskButton {
+  &:before {
+    font-size: 1.25rem;
+  }
+
+  &:hover {
+    color: $color-spray;
+  }
+
+  & + & {
+    margin-top: 10px;
+  }
+}
