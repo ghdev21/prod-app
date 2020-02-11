@@ -14,16 +14,16 @@ import * as action from '../../store/actions/index';
 const TaskList = ({
   history,
   taskList,
-  initTaskList,
-  skipGreeting,
-  openTaskListModal,
+  onInitTaskList,
+  onSkipGreeting,
+  onOpenTaskListModal,
 }) => {
   useEffect(() => {
-    initTaskList();
-  }, [initTaskList]);
+    onInitTaskList();
+  }, [onInitTaskList]);
 
   const redirectToSettings = () => {
-    skipGreeting();
+    onSkipGreeting();
     history.push('/settings');
   };
   let content = <Spinner />;
@@ -34,7 +34,7 @@ const TaskList = ({
   if (taskList.isFirstTask || taskList.isFirstVisit) {
     content = (
       <TaskListMessages
-        skip={skipGreeting}
+        skip={onSkipGreeting}
         redirect={redirectToSettings}
         str={taskList.isFirstVisit ? 'firstVisit' : 'firstTask'}
         isFirstVisit={taskList.isFirstVisit}
@@ -45,7 +45,7 @@ const TaskList = ({
     <div className={classes.TaskList}>
       <div className={classes.AddTaskWrapper}>
         <PageHeading title="Daily Task List" />
-        <PlusBtn showModal={openTaskListModal} />
+        <PlusBtn showModal={onOpenTaskListModal} />
       </div>
       {content}
       {taskList.isModalOpen
@@ -63,9 +63,9 @@ const mapStateToProps = ({ taskList }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initTaskList: () => dispatch(action.initTaskList()),
-  skipGreeting: () => dispatch(action.skipGreeting()),
-  openTaskListModal: () => dispatch(action.openTaskListModal()),
+  onInitTaskList: () => dispatch(action.initTaskList()),
+  onSkipGreeting: () => dispatch(action.skipGreeting()),
+  onOpenTaskListModal: () => dispatch(action.openTaskListModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(TaskList));
