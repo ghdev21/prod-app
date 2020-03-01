@@ -1,0 +1,34 @@
+@import "../../assets/styles/helpers/variables";
+
+.FilterList {
+  display: flex;
+  width: max-content;
+  margin: 0 0 20px auto;
+}
+
+.FilterItem {
+  color: $color-nepal;
+  padding: 0 10px;
+  & + & {
+    position: relative;
+    &:before{
+      position: absolute;
+      content: '|';
+      left: 0;
+    }
+  }
+  &:last-child{
+    padding-right: 0;
+  }
+}
+.FilterButton {
+  text-transform: capitalize;
+  font-size: 1rem;
+  &:hover {
+    color: $color-spray;
+  }
+}
+
+.Active {
+  color: white;
+}
