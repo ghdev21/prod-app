@@ -11,8 +11,8 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
   const [filterOptions, setFilterOptions] = useState(
     { topListFilter: 'toDo', globalListFilter: 'All' },
   );
-  const [isGlobalListShow, setGlobalListVisibility] = useState(false);
-  const listsConfig = generateListConfigs(taskList.tasks, filterOptions, isGlobalListShow);
+  const [isGlobalListShown, setGlobalListVisibility] = useState(false);
+  const listsConfig = generateListConfigs(taskList.tasks, filterOptions, isGlobalListShown);
 
   const drawTask = map((item) => {
     const [fireBaseId, obj] = item;
@@ -31,7 +31,7 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
     const { categoryName, data } = el;
     let categoryList = null;
 
-    if (data.length && isGlobalListShow) {
+    if (data.length && isGlobalListShown) {
       categoryList = (
         <div
           className={`${classes.CategoryList} ${classes[categoryName]}`}
@@ -78,7 +78,7 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
                 <div className={classes.GlobalListToggle}>
                   <button
                     className={classes.ShowButton}
-                    onClick={() => setGlobalListVisibility(!isGlobalListShow)}
+                    onClick={() => setGlobalListVisibility(!isGlobalListShown)}
                   >
                     <span>Global List</span>
                     <span className={`${classes.ShowListIndicator} ${globalListIndicator}`} />
