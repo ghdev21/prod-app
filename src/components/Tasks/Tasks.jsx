@@ -62,7 +62,9 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
           name, list, filters, active, isShown,
         } = config;
         const isGlobal = name === 'global';
-        const globalListIndicator = isShown ? 'icon-global-list-arrow-down' : 'icon-global-list-arrow-right';
+        const globalListIndicator = isShown
+          ? 'icon-global-list-arrow-down'
+          : 'icon-global-list-arrow-right';
         let content;
 
         if (isGlobal) {
