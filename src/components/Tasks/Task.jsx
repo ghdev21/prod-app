@@ -61,8 +61,7 @@ export default ({id, taskData, onEditTask, onMoveToDaily}) => {
           />
         }
         {!taskData.done
-          &&
-          <button
+          && <button
             className={`${classes.TaskButton} icon-edit`}
             onClick={() => onEditTask({ ...taskData, fireBaseId: id })}
           />
