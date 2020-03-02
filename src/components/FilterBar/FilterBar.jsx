@@ -7,8 +7,13 @@ export default ({ marks, activeElement, handler }) => (
       const isActive = item === activeElement
         ? `${classes.FilterButton} ${classes.Active}`
         : classes.FilterButton;
+
       return (
-        <li className={classes.FilterItem} key={item} onClick={() => handler(item)}>
+        <li
+          className={classes.FilterItem}
+          key={item}
+          onClick={() => handler(item)}
+        >
           <button className={isActive}>{item}</button>
         </li>
       );

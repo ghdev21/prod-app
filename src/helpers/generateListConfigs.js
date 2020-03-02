@@ -1,36 +1,19 @@
-export default (tasks, filterOpts, isGlobalListShow ) => {
-  const { topListFilter, globalListFilter} = filterOpts;
+import { map, compose } from 'ramda';
+import { STATUS_FILTERS, PRIORITY_FILTERS, DEFAULT_STATUS_FILTER } from '../constants/Filters';
+import { getUniqueCategory, getCategoriesList, generateConfig } from './taskListUtils';
+
+export default (tasks, filterOpts, isGlobalListShow) => {
+  const { topListActiveFilter, globalListActiveFilter } = filterOpts;
   const { globalList, dailyList, done } = tasks;
-  const categories = globalList.map((item) => item[1].category);
-  const categoryCollection = new Set(categories);
-  const topList = topListFilter === 'toDo' ? dailyList : done;
-  const data = [...categoryCollection].map((category) => {
-    const dataArr = globalList.filter((el) => {
-      const [, task] = el;
-      const isTaskEqualCategory = task.category === category;
 
-      return globalListFilter === 'All'
-        ? isTaskEqualCategory
-        : isTaskEqualCategory && task.priority === globalListFilter;
-    });
-
-    return { categoryName: category, data: dataArr };
-  });
+  const topList = topListActiveFilter === DEFAULT_STATUS_FILTER ? dailyList : done;
+  const global = compose(
+    map(getCategoriesList(globalList, globalListActiveFilter)),
+    getUniqueCategory,
+  )(globalList);
 
   return [
-    {
-      name: 'top',
-      list: topList,
-      filters: ['toDo', 'done'],
-      active: topListFilter,
-      isShown: true,
-    },
-    {
-      name: 'global',
-      list: data,
-      filters: ['All', 'Urgent', 'High', 'Middle', 'Low'],
-      active: globalListFilter,
-      isShown: isGlobalListShow,
-    },
+    generateConfig('top', topList, STATUS_FILTERS, topListActiveFilter, true),
+    generateConfig('global', global, PRIORITY_FILTERS, globalListActiveFilter, isGlobalListShow),
   ];
 };

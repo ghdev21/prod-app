@@ -5,11 +5,12 @@ import Task from './Task';
 import FilterBar from '../FilterBar/FilterBar';
 import generateListConfigs from '../../helpers/generateListConfigs';
 import * as action from '../../store/actions';
+import { DEFAULT_STATUS_FILTER, DEFAULT_PRIORITY_FILTER } from '../../constants/Filters';
 import classes from './Task.module.scss';
 
 const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
   const [filterOptions, setFilterOptions] = useState(
-    { topListFilter: 'toDo', globalListFilter: 'All' },
+    { topListActiveFilter: DEFAULT_STATUS_FILTER, globalListActiveFilter: DEFAULT_PRIORITY_FILTER },
   );
   const [isGlobalListShown, setGlobalListVisibility] = useState(false);
   const listsConfig = generateListConfigs(taskList.tasks, filterOptions, isGlobalListShown);
@@ -49,9 +50,9 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
 
   const filterHandler = curry((name, val) => {
     if (name === 'global') {
-      setFilterOptions({ ...filterOptions, globalListFilter: val });
+      setFilterOptions({ ...filterOptions, globalListActiveFilter: val });
     } else {
-      setFilterOptions({ ...filterOptions, topListFilter: val });
+      setFilterOptions({ ...filterOptions, topListActiveFilter: val });
     }
   });
 
