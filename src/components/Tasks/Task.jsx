@@ -1,5 +1,6 @@
 import React from 'react';
-import checkIsOverdue from '../../helpers/checkIsOverdue';
+import isOverdue from '../../helpers/isOverdue';
+import getTaskListConstants from '../../helpers/getTaskListConstants';
 import classes from './Task.module.scss';
 
 const months = [
@@ -23,13 +24,14 @@ export default ({id, taskData, onEditTask, onMoveToDaily}) => {
   const month = months[deadlineDate.getMonth()];
   const dateNow = new Date();
   const additionalClass = [classes.Date];
+  const { IS_DAILY_LIST, IS_DONE_LIST ,IS_GLOBAL_LIST } = getTaskListConstants(taskData);
 
-  if (checkIsOverdue(dateNow, deadlineDate)) {
+  if (isOverdue(dateNow, deadlineDate)) {
     additionalClass.push(classes.Overdue);
   }
 
   const dateBlockContent = (
-    !taskData.isDaily
+    !IS_DAILY_LIST
       ? (
         <>
           <span>{day}</span>
@@ -39,7 +41,7 @@ export default ({id, taskData, onEditTask, onMoveToDaily}) => {
       : <span className={classes.Today}>today</span>
   );
 
-  const taskClasses = taskData.done
+  const taskClasses = IS_DONE_LIST
     ? `${classes.Task} ${classes.Category} ${classes[taskData.category]} ${classes.Done}`
     : `${classes.Task} ${classes.Category} ${classes[taskData.category]}`;
 
@@ -54,13 +56,14 @@ export default ({id, taskData, onEditTask, onMoveToDaily}) => {
       </p>
       <p className={classes.TaskButtons}>
         {
-          !taskData.isDaily || !taskData.done
+          IS_GLOBAL_LIST
           && <button
             className={`${classes.TaskButton} icon-arrows-up`}
             onClick={() => onMoveToDaily(id, taskData)}
           />
         }
-        {!taskData.done
+        {
+          !IS_DONE_LIST
           && <button
             className={`${classes.TaskButton} icon-edit`}
             onClick={() => onEditTask({ ...taskData, fireBaseId: id })}
@@ -68,7 +71,7 @@ export default ({id, taskData, onEditTask, onMoveToDaily}) => {
         }
       </p>
       <button
-        disabled={taskData.done}
+        disabled={IS_DONE_LIST}
         className={`${classes.Priority} ${classes[taskData.priority]}`}
       >
         <span className={`${classes.TomatoIcon} icon-tomato`}/>

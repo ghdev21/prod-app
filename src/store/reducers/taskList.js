@@ -11,7 +11,9 @@ import {
   UPDATE_TASK,
   START_UPDATING_TASK,
   START_DELETING_TASK,
-  DELETE_TASK, START_MOVING_TO_DAILY, MOVE_TO_DAILY,
+  DELETE_TASK,
+  START_MOVING_TO_DAILY,
+  MOVE_TO_DAILY,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
 import taskForm from '../../constants/TaskFormOpts';

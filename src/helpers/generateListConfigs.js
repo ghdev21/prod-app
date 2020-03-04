@@ -6,7 +6,9 @@ export default (tasks, filterOpts, isGlobalListShown) => {
   const { topListActiveFilter, globalListActiveFilter } = filterOpts;
   const { globalList, dailyList, done } = tasks;
 
-  const topList = topListActiveFilter === DEFAULT_STATUS_FILTER ? dailyList : done;
+  const topList = topListActiveFilter === DEFAULT_STATUS_FILTER
+    ? dailyList
+    : done;
   const global = compose(
     map(getCategoriesList(globalList, globalListActiveFilter)),
     getUniqueCategory,

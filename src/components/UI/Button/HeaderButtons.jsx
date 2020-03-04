@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import PlusBtn from '../../AddTask/PlusBtn';
 import * as action from '../../../store/actions';
@@ -6,7 +6,6 @@ import classes from './Button.module.scss';
 
 export default (props) => {
   const dispatch = useDispatch();
-  const showModal = useCallback(() => dispatch(action.openTaskListModal()), [dispatch]);
 
   return (
     <ul className={classes.TaskListButtons}>
@@ -14,7 +13,7 @@ export default (props) => {
         props.fixed
         && (
           <li className={classes.TaskListItem}>
-            <PlusBtn showModal={showModal} />
+            <PlusBtn showModal={() => dispatch(action.openTaskListModal())} />
           </li>
         )
       }

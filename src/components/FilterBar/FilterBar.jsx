@@ -12,9 +12,13 @@ export default ({ marks, activeElement, handler }) => (
         <li
           className={classes.FilterItem}
           key={item}
-          onClick={() => handler(item)}
         >
-          <button className={isActive}>{item}</button>
+          <button
+            className={isActive}
+            onClick={() => handler(item)}
+          >
+            {item}
+          </button>
         </li>
       );
     })}

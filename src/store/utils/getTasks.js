@@ -1,24 +1,30 @@
 import { curry } from 'ramda';
 
+const checkIsPropTruthy = curry((prop, item) => item[1][prop]);
+const filter = curry((arr, fn) => arr.filter(fn));
+const checkIsTaskDaily = (item) => !item[1].done && !item[1].isDaily;
+
+const filterByLists = (list) => {
+  const filterBy = filter(list);
+  const daily = filterBy(checkIsPropTruthy('isDaily'));
+  const done = filterBy(checkIsPropTruthy('done'));
+  const global = filterBy(checkIsTaskDaily);
+
+  return { global, done, daily };
+};
+
+
 export default (state, action) => {
   const { tasks, isFirstTask } = action.payload;
   const allTasks = Object.entries(tasks);
-  const get = curry((prop, bool, item) => {
-    const [, taskData] = item;
+  const { global, done, daily } = filterByLists(allTasks);
 
-    return bool ? taskData[prop] : !taskData[prop];
-  });
+  const taskListCopy = {
+    ...state.tasks,
+    globalList: global,
+    dailyList: daily,
+    done,
+  };
 
-  const getByDailyProp = get('isDaily');
-  const getByDoneProp = get('done');
-  const daily = allTasks.filter(getByDailyProp(true));
-  const done = allTasks.filter(getByDoneProp(true));
-  const global = allTasks.filter((item) => !item[1].done && !item[1].isDaily);
-  const tasksFromStateCopy = { ...state.tasks };
-
-  tasksFromStateCopy.globalList = global;
-  tasksFromStateCopy.dailyList = daily;
-  tasksFromStateCopy.done = done;
-
-  return { ...state, tasks: tasksFromStateCopy, isFirstTask };
+  return { ...state, tasks: taskListCopy, isFirstTask };
 };
