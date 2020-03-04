@@ -12,6 +12,8 @@ import {
   START_UPDATING_TASK,
   START_DELETING_TASK,
   DELETE_TASK,
+  START_MOVING_TO_DAILY,
+  MOVE_TO_DAILY,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
 import taskForm from '../../constants/TaskFormOpts';
@@ -22,6 +24,8 @@ import updateField from '../utils/updateField';
 const initialState = {
   tasks: {
     globalList: null,
+    dailyList: null,
+    done: null,
   },
   isFirstVisit: checkFirstVisit(),
   isFirstTask: null,
@@ -55,7 +59,9 @@ export default (state = initialState, action) => {
       return { ...state, loading: false, isModalOpen: false };
 
     case UPDATE_TASK:
-      return { ...state, loading: false, isModalOpen: false, editableTask: null };
+      return {
+        ...state, loading: false, isModalOpen: false, editableTask: null,
+      };
 
     case START_UPDATING_TASK:
       return { ...state, loading: true };
@@ -70,7 +76,15 @@ export default (state = initialState, action) => {
       return { ...state, loading: true };
 
     case DELETE_TASK:
-      return { ...state, loading: false, isModalOpen: false, editableTask: null };
+      return {
+        ...state, loading: false, isModalOpen: false, editableTask: null,
+      };
+
+    case START_MOVING_TO_DAILY:
+      return { ...state, loading: true };
+
+    case MOVE_TO_DAILY:
+      return { ...state, loading: false };
 
     default:
       return state;

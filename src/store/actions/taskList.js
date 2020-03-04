@@ -31,9 +31,8 @@ export const changeTaskListModal = (evt, id, prop) => ({
   payload: { evt, id, prop },
 });
 
-export const saveTask = (res) => ({
+export const saveTask = () => ({
   type: actionTypes.SAVE_TASK,
-  payload: res,
 });
 
 export const editTask = (data) => ({
@@ -41,36 +40,51 @@ export const editTask = (data) => ({
   payload: data,
 });
 
-export const updateTask = (data) => ({
+export const updateTask = () => ({
   type: actionTypes.UPDATE_TASK,
-  payload: data,
 });
 
 export const deleteTask = () => ({
   type: actionTypes.DELETE_TASK,
 });
 
+export const moveToDaily = () => ({
+  type: actionTypes.MOVE_TO_DAILY,
+});
+
+export const startMovingToDaily = (id, data) => (dispatch) => {
+  dispatch({ type: actionTypes.START_MOVING_TO_DAILY });
+
+  const dataToSave = { ...data, isDaily: true };
+
+  axios.patch(`tasks/${id}.json`, dataToSave)
+    .then(() => {
+      dispatch(moveToDaily());
+      dispatch(initTaskList());
+    });
+};
+
 export const startSaveTask = (data) => (dispatch) => {
   dispatch({ type: actionTypes.START_SAVING_TASK });
-  axios.post('tasks/globalList.json', data)
-    .then((res) => {
-      dispatch(saveTask(res));
+  axios.post('tasks.json', data)
+    .then(() => {
+      dispatch(saveTask());
       dispatch(initTaskList());
     });
 };
 
 export const startUpdateTask = (data, id) => (dispatch) => {
   dispatch({ type: actionTypes.START_UPDATING_TASK });
-  axios.put(`tasks/globalList/${id}.json`, data)
-    .then((res) => {
-      dispatch(updateTask(res));
+  axios.put(`tasks/${id}.json`, data)
+    .then(() => {
+      dispatch(updateTask());
       dispatch(initTaskList());
     });
 };
 
 export const startDeleteTask = (id) => (dispatch) => {
   dispatch({ type: actionTypes.START_DELETING_TASK });
-  axios.delete(`tasks/globalList/${id}.json`)
+  axios.delete(`tasks/${id}.json`)
     .then(() => {
       dispatch(deleteTask());
       dispatch(initTaskList());

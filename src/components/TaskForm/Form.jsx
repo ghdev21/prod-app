@@ -35,6 +35,8 @@ const Form = ({
       status: null,
       completedCount: 0,
       failedPomodoros: [],
+      isDaily: false,
+      done: false,
       ...taskData,
     };
 

@@ -1,7 +1,110 @@
 @import "../../assets/styles/helpers/variables";
 
-.GlobalList {
-  margin-top: 70px;
+.CategoryList {
+  position: relative;
+
+  & + & {
+    margin-top: 25px;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+  }
+
+  &.Education:before {
+    background-color: $color-education;
+  }
+
+  &.Work:before {
+    background-color: $color-work;
+  }
+
+  &.Other:before {
+    background-color: $color-other;
+  }
+
+  &.Sport:before {
+    background-color: $color-sport;
+  }
+
+  &.Hobby:before {
+    background-color: $color-hobby;
+  }
+}
+
+.Circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -3px;
+  left: -4px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+
+  &.Work {
+    background-color: $color-work;
+  }
+
+  &.Education {
+    background-color: $color-education;
+  }
+
+  &.Other {
+    background-color: $color-other;
+  }
+
+  &.Sport {
+    background-color: $color-sport;
+  }
+
+  &.Hobby {
+    background-color: $color-hobby;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    background-color: inherit;
+    width: 6px;
+    height: 6px;
+    border-radius: inherit;
+    border: 2px solid $color-main-background;
+  }
+
+}
+
+.Title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0 0 15px 20px;
+  line-height: .9;
+
+  &.Education {
+    color: $color-education;
+  }
+
+  &.Sport {
+    color: $color-sport;
+  }
+
+  &.Hobby {
+    color: $color-hobby;
+  }
+
+  &.Work {
+    color: $color-work;
+  }
+
+  &.Other {
+    color: $color-other;
+  }
 }
 
 .Task {
@@ -47,7 +150,17 @@
   align-items: center;
   flex-shrink: 0;
   font-size: 1.68rem;
+
+}
+
+.Overdue {
   color: $color-urgent;
+}
+
+.Today {
+  @extend .Month;
+  text-transform: uppercase;
+  color: $color-gray;
 }
 
 .Month {
@@ -70,6 +183,64 @@
   color: $color-btn-green;
 }
 
+.Done {
+  background-color: darken($color-white, $darken-15);
+
+  &.Education {
+    border-color: lighten($color-education, $lighten-10);
+  }
+
+  &.Sport {
+    border-color: lighten($color-sport, $lighten-10);
+  }
+
+  &.Hobby {
+    border-color: lighten($color-hobby, $lighten-10);
+  }
+
+  &.Work {
+    border-color: lighten($color-work, $lighten-10);
+  }
+
+  &.Other {
+    border-color: lighten($color-other, $lighten-10);
+  }
+
+  &.Urgent {
+    color: lighten($color-urgent, $lighten-10);
+  }
+
+  &.High {
+    color: lighten($color-high, $lighten-10);
+  }
+
+  &.Middle {
+    color: lighten($color-middle, $lighten-10);
+  }
+
+  &.Low {
+    color: lighten($color-btn-green, $lighten-10);
+  }
+
+  .Priority {
+    &.Urgent {
+      background-color: lighten($color-urgent, $lighten-3);
+    }
+
+    &.High {
+      background-color: lighten($color-high, $lighten-3);
+    }
+
+    &.Middle {
+      background-color: lighten($color-middle, $lighten-3);
+    }
+
+    &.Low {
+      background-color: lighten($color-btn-green, $lighten-3);
+    }
+  }
+}
+
 .TaskInfo {
   display: flex;
   justify-content: center;
@@ -89,45 +260,49 @@
   color: $color-white;
   font-size: 1.5rem;
 
-  &:hover {
-    .Estimation {
-      display: none;
-    }
+  &:not(:disabled) {
+    &:hover {
+      cursor: pointer;
 
-    .TomatoIcon:before {
-      content: '\e90e';
+      .Estimation {
+        display: none;
+      }
+
+      .TomatoIcon:before {
+        content: '\e90e';
+      }
     }
   }
 
   &.Urgent {
     background-color: $color-urgent;
 
-    &:hover {
-      background-color: darken($color-urgent, 10%);
+    &:not(:disabled):hover {
+      background-color: darken($color-urgent, $darken-15);
     }
   }
 
   &.High {
     background-color: $color-high;
 
-    &:hover {
-      background-color: darken($color-high, 10%);
+    &:not(:disabled):hover {
+      background-color: darken($color-high, $darken-15);
     }
   }
 
   &.Middle {
     background-color: $color-middle;
 
-    &:hover {
-      background-color: darken($color-middle, 10%);
+    &:not(:disabled):hover {
+      background-color: darken($color-middle, $darken-15);
     }
   }
 
   &.Low {
     background-color: $color-btn-green;
 
-    &:hover {
-      background-color: darken($color-btn-green, 10%);
+    &:not(:disabled):hover {
+      background-color: darken($color-btn-green, $darken-15);
     }
   }
 }
@@ -157,4 +332,27 @@
   & + & {
     margin-top: 10px;
   }
+}
+
+.GlobalListToggle {
+  margin-top: 30px;
+  width: max-content;
+  color: $color-nepal;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-spray;
+  }
+}
+
+.ShowButton {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 1.25rem;
+}
+
+.ShowListIndicator {
+  margin-left: 10px;
+  font-size: .7rem;
 }

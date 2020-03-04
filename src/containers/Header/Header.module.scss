@@ -21,8 +21,9 @@
   flex-grow: 1;
   margin: 0 auto;
   height: 100px;
+}
 
-  nav {
-    margin-left: auto;
-  }
+.Actions {
+  margin-left: auto;
+  display: flex;
 }

@@ -15,4 +15,5 @@ export {
   startUpdateTask,
   startDeleteTask,
   editTask,
+  startMovingToDaily,
 } from './taskList';
