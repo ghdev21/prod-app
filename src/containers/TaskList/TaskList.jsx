@@ -7,6 +7,7 @@ import TaskListMessages from '../../components/TaskListMessages/TaskListMessages
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Tasks from '../../components/Tasks/Tasks';
 import Modal from '../../components/UI/Modal/Modal';
+import DeleteConfirmation from '../../components/DeleteConfirmation/DeleteConfirmation';
 import TaskForm from '../../components/TaskForm/Form';
 import classes from './TaskList.module.scss';
 import * as action from '../../store/actions/index';
@@ -21,7 +22,6 @@ const TaskList = ({
   useEffect(() => {
     onInitTaskList();
   }, [onInitTaskList]);
-
   const redirectToSettings = () => {
     onSkipGreeting();
     history.push('/settings');
@@ -51,7 +51,12 @@ const TaskList = ({
       {taskList.isModalOpen
         && (
           <Modal>
-            <TaskForm />
+            {taskList.isDeleteConfirmationShown
+              ? <DeleteConfirmation
+                elements={taskList.shouldBeDeleteItems}
+                loading={taskList.loading}
+              />
+              : <TaskForm />}
           </Modal>
         )}
     </div>

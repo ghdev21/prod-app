@@ -1,12 +1,16 @@
-@import "../../assets/styles/helpers/variables";
+@import "../../../assets/styles/helpers/variables";
 
-.FilterList {
+.List {
   display: flex;
   width: max-content;
-  margin: 0 0 20px auto;
+  margin: 0 0 0 auto;
 }
 
-.FilterItem {
+.SelectionList {
+  margin-left: 0;
+}
+
+.ListItem {
   color: $color-nepal;
   padding: 0 10px;
   & + & {
@@ -21,7 +25,8 @@
     padding-right: 0;
   }
 }
-.FilterButton {
+
+.ListButton {
   text-transform: capitalize;
   font-size: 1rem;
   &:hover {

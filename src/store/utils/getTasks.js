@@ -21,10 +21,11 @@ export default (state, action) => {
 
   const taskListCopy = {
     ...state.tasks,
+    allTasks,
     globalList: global,
     dailyList: daily,
     done,
   };
 
-  return { ...state, tasks: taskListCopy, isFirstTask };
+  return { ...state, tasks: taskListCopy, isFirstTask, loading: false };
 };
