@@ -89,7 +89,7 @@ export const saveTask = (data) => (dispatch) => {
     });
 };
 
-export const updateTask = (data, id) => (dispatch) => {
+export const updateTask = ({ data, id }) => (dispatch) => {
   dispatch({ type: actionTypes.UPDATE_TASK.IS_FETCHING });
   axios.put(`tasks/${id}.json`, data)
     .then(() => {

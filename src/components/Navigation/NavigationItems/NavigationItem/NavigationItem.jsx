@@ -6,24 +6,25 @@ import classes from './NavigationItem.module.scss';
 import { SETTINGS, POMODOROS, TASK_LIST } from '../../../../constants/Routes';
 
 export default withRouter(({ title, location }) => {
-  const isDeleteMode = useSelector(state => state.taskList.isDeleteMode);
+  const isDeleteMode = useSelector((state) => state.taskList.isDeleteMode);
   const activeClass = isDeleteMode ? '' : classes.Active;
   const locationPath = location.pathname.split('/');
-  let handler = null;
+  const hasSubRoute = locationPath.length > 2;
+  let offDeleteMode = null;
   let path = title === SETTINGS ? `${title}/${POMODOROS}` : title;
-  if (title === SETTINGS && locationPath.length > 2) {
+  if (title === SETTINGS && hasSubRoute) {
     path = `${title}/${locationPath[locationPath.length - 1]}`;
   }
   if (title === TASK_LIST) {
     const dispatch = useDispatch();
-    handler = () => dispatch(action.disableDeleteMode());
+    offDeleteMode = () => dispatch(action.disableDeleteMode());
   }
 
   return (
     <li className={classes.NavigationItem}>
       <NavLink
         to={`/${path}`}
-        onClick={handler}
+        onClick={offDeleteMode}
         className={`${classes.NavigationLink}`}
         activeClassName={activeClass}
       >

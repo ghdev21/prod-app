@@ -40,7 +40,7 @@ const Form = ({
     };
 
     if (editableTask) {
-      onUpdateTask(dataToSend, editableTask.id);
+      onUpdateTask({ data: dataToSend, id: editableTask.id });
     } else {
       onSaveTask(dataToSend);
     }
@@ -89,7 +89,7 @@ const mapStateToProps = ({ taskList }) => ({
 const mapDispatchToProps = (dispatch) => ({
   onCloseTaskListModal: () => dispatch(action.closeTaskListModal()),
   onSaveTask: (data) => dispatch(action.saveTask(data)),
-  onUpdateTask: (data, id) => dispatch(action.updateTask(data, id)),
+  onUpdateTask: (taskObj) => dispatch(action.updateTask(taskObj)),
   onDeleteTask: (id) => dispatch(action.deleteTask(id)),
 });
 

@@ -1,4 +1,4 @@
-import uniq from 'ramda/src/uniq';
+import { uniq } from 'ramda';
 
 export default (state, payload) => {
   const { ids, isSelected } = payload;

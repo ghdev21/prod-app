@@ -25,7 +25,7 @@ export default ({ elements, loading }) => {
                  Cancel
                </Button>
                <Button
-                 color="Red"
+                 color="Remove"
                  clickHandler={() => dispatch(action.deleteTask(...elements))}
                >
                  Remove

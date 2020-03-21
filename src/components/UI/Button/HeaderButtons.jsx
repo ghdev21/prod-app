@@ -8,8 +8,10 @@ export default (props) => {
   const dispatch = useDispatch();
   const { isDeleteMode, shouldBeDeleteItems } = useSelector(state => state.taskList);
   const trashBtnClasses = isDeleteMode ? `${classes.TaskListButton} ${classes.Active}` : classes.TaskListButton;
-  const handler = (counter, isDeleteMode) => {
-    const actionToExecute = counter && isDeleteMode ? action.showDeleteConfirmation() : action.enableDeleteMode();
+  const deleteTaskHandler = (counter, isDeleteMode) => {
+    const actionToExecute = counter && isDeleteMode
+      ? action.showDeleteConfirmation()
+      : action.enableDeleteMode();
     dispatch(actionToExecute);
   };
 
@@ -26,7 +28,7 @@ export default (props) => {
       <li className={`${classes.TaskListItem} ${classes.TrashItem}`}>
         <button
           className={trashBtnClasses}
-          onClick={() => handler(shouldBeDeleteItems.length, isDeleteMode)}
+          onClick={() => deleteTaskHandler(shouldBeDeleteItems.length, isDeleteMode)}
         >
           {
             shouldBeDeleteItems.length
