@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../components/TaskForm/Form.module.scss';
+import classes from './Form.module.scss';
 
 export default ({
   type,

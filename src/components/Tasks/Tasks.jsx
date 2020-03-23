@@ -1,52 +1,23 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { curry, map } from 'ramda';
-import Task from './Task';
-import FilterBar from '../FilterBar/FilterBar';
+import drawTask from '../../helpers/drawTask';
+import createGlobalList from '../../helpers/createGlobalList';
+import FilterBar from '../UI/Bar/FilterBar';
 import generateListConfigs from '../../helpers/generateListConfigs';
 import * as action from '../../store/actions';
 import { DEFAULT_STATUS_FILTER, DEFAULT_PRIORITY_FILTER } from '../../constants/Filters';
 import classes from './Task.module.scss';
+import SelectBar from '../UI/Bar/SelectBar';
 
-const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
+const Tasks = (props) => {
+  const { taskList } = props;
   const [filterOptions, setFilterOptions] = useState(
     { topListActiveFilter: DEFAULT_STATUS_FILTER, globalListActiveFilter: DEFAULT_PRIORITY_FILTER },
   );
   const [isGlobalListShown, setGlobalListVisibility] = useState(false);
   const listsConfig = generateListConfigs(taskList.tasks, filterOptions, isGlobalListShown);
-
-  const drawTask = map((item) => {
-    const [fireBaseId, obj] = item;
-    return (
-      <Task
-        key={fireBaseId}
-        id={fireBaseId}
-        taskData={obj}
-        onEditTask={onEditTask}
-        onMoveToDaily={onMoveToDaily}
-      />
-    );
-  });
-
-  const createGlobalList = (el) => {
-    const { categoryName, data } = el;
-    let categoryList = null;
-
-    if (data.length && isGlobalListShown) {
-      categoryList = (
-        <div
-          className={`${classes.CategoryList} ${classes[categoryName]}`}
-          key={categoryName}
-        >
-          <span className={`${classes.Circle} ${classes[categoryName]}`} />
-          <h3 className={`${classes.Title} ${classes[categoryName]}`}>{categoryName}</h3>
-          {drawTask(data)}
-        </div>
-      );
-    }
-
-    return categoryList;
-  };
+  const getTask = map(drawTask({ ...props }));
 
   const filterHandler = curry((name, val) => {
     if (name === 'global') {
@@ -66,13 +37,11 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
         const globalListIndicator = isShown
           ? 'icon-global-list-arrow-down'
           : 'icon-global-list-arrow-right';
-        let content;
 
-        if (isGlobal) {
-          content = map(createGlobalList, list);
-        } else {
-          content = drawTask(list);
-        }
+        const content = isGlobal
+          ? map(createGlobalList(getTask), list)
+          : getTask(list);
+
         return (
           <React.Fragment key={name}>
             {
@@ -93,11 +62,20 @@ const Tasks = ({ taskList, onEditTask, onMoveToDaily }) => {
               isShown
               && (
                 <div>
-                  <FilterBar
-                    handler={filterHandler(name)}
-                    marks={filters}
-                    activeElement={active}
-                  />
+                  <div className={classes.BarSection}>
+                    {taskList.isDeleteMode
+                    && <SelectBar
+                      list={isGlobal
+                        ? taskList.tasks.globalList
+                        : list}
+                      onUpdateTrashItem={props.onUpdateTrashItem}
+                    />}
+                    <FilterBar
+                      handler={filterHandler(name)}
+                      marks={filters}
+                      activeElement={active}
+                    />
+                  </div>
                   {content}
                 </div>
               )
@@ -115,7 +93,8 @@ const mapStateToProps = ({ taskList }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onEditTask: (data) => dispatch(action.editTask(data)),
-  onMoveToDaily: (id, data) => dispatch(action.startMovingToDaily(id, data)),
+  onMoveToDaily: (id, data) => dispatch(action.moveToDaily(id, data)),
+  onUpdateTrashItem: (id, isSelected) => dispatch(action.updateTrashItem(id, isSelected)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

@@ -2,91 +2,109 @@ import * as actionTypes from './actionTypes';
 import axios from '../../axios';
 
 export const getTasks = (tasks) => ({
-  type: actionTypes.GET_TASKS,
+  type: actionTypes.GET_TASKS.HAS_FETCHED,
   payload: {
     tasks,
     isFirstTask: !Object.keys(tasks).length,
   },
 });
 
+export const declineDeleting = () => ({
+  type: actionTypes.DECLINE_DELETING.HAS_FETCHED,
+});
+
 export const skipGreeting = () => ({
-  type: actionTypes.SKIP_GREETING,
+  type: actionTypes.SKIP_GREETING.HAS_FETCHED,
+});
+
+export const enableDeleteMode = () => ({
+  type: actionTypes.ENABLE_DELETE_MODE.HAS_FETCHED,
+});
+
+export const disableDeleteMode = () => ({
+  type: actionTypes.DISABLE_DELETE_MODE.HAS_FETCHED,
+});
+
+export const moveToTrash = (id, flags) => ({
+  type: actionTypes.MOVE_TO_TRASH.HAS_FETCHED,
+  payload: { id, flags },
+});
+
+export const updateTrash = (tasks) => ({
+  type: actionTypes.UPDATE_TRASH.HAS_FETCHED,
+  payload: tasks,
+});
+
+export const showDeleteConfirmation = () => ({
+  type: actionTypes.SHOW_DELETE_CONFIRMATION.HAS_FETCHED,
 });
 
 export const initTaskList = () => (dispatch) => {
+  dispatch({ type: actionTypes.GET_TASKS.IS_FETCHING });
   axios.get('tasks.json')
     .then((res) => dispatch(getTasks(res.data || {})));
 };
 
 export const openTaskListModal = () => ({
-  type: actionTypes.OPEN_TASK_LIST_MODAL,
+  type: actionTypes.OPEN_TASK_LIST_MODAL.HAS_FETCHED,
+});
+
+export const updateTrashItem = (ids, isSelected) => ({
+  type: actionTypes.UPDATE_TRASH_ITEM.HAS_FETCHED,
+  payload: { ids, isSelected },
 });
 
 export const closeTaskListModal = () => ({
-  type: actionTypes.CLOSE_TASK_LIST_MODAL,
+  type: actionTypes.CLOSE_TASK_LIST_MODAL.HAS_FETCHED,
 });
 
 export const changeTaskListModal = (evt, id, prop) => ({
-  type: actionTypes.CHANGE_TASK_LIST_MODAL,
+  type: actionTypes.CHANGE_TASK_LIST_MODAL.HAS_FETCHED,
   payload: { evt, id, prop },
 });
 
-export const saveTask = () => ({
-  type: actionTypes.SAVE_TASK,
-});
-
 export const editTask = (data) => ({
-  type: actionTypes.EDIT_TASK,
+  type: actionTypes.EDIT_TASK.HAS_FETCHED,
   payload: data,
 });
 
-export const updateTask = () => ({
-  type: actionTypes.UPDATE_TASK,
-});
-
-export const deleteTask = () => ({
-  type: actionTypes.DELETE_TASK,
-});
-
-export const moveToDaily = () => ({
-  type: actionTypes.MOVE_TO_DAILY,
-});
-
-export const startMovingToDaily = (id, data) => (dispatch) => {
-  dispatch({ type: actionTypes.START_MOVING_TO_DAILY });
+export const moveToDaily = (id, data) => (dispatch) => {
+  dispatch({ type: actionTypes.MOVE_TO_DAILY.IS_FETCHING });
 
   const dataToSave = { ...data, isDaily: true };
 
   axios.patch(`tasks/${id}.json`, dataToSave)
     .then(() => {
-      dispatch(moveToDaily());
+      dispatch({ type: actionTypes.MOVE_TO_DAILY.HAS_FETCHED });
       dispatch(initTaskList());
     });
 };
 
-export const startSaveTask = (data) => (dispatch) => {
-  dispatch({ type: actionTypes.START_SAVING_TASK });
+export const saveTask = (data) => (dispatch) => {
+  dispatch({ type: actionTypes.SAVE_TASK.IS_FETCHING });
   axios.post('tasks.json', data)
     .then(() => {
-      dispatch(saveTask());
+      dispatch({ type: actionTypes.SAVE_TASK.HAS_FETCHED });
       dispatch(initTaskList());
     });
 };
 
-export const startUpdateTask = (data, id) => (dispatch) => {
-  dispatch({ type: actionTypes.START_UPDATING_TASK });
+export const updateTask = ({ data, id }) => (dispatch) => {
+  dispatch({ type: actionTypes.UPDATE_TASK.IS_FETCHING });
   axios.put(`tasks/${id}.json`, data)
     .then(() => {
-      dispatch(updateTask());
+      dispatch({ type: actionTypes.UPDATE_TASK.HAS_FETCHED });
       dispatch(initTaskList());
     });
 };
 
-export const startDeleteTask = (id) => (dispatch) => {
-  dispatch({ type: actionTypes.START_DELETING_TASK });
-  axios.delete(`tasks/${id}.json`)
+export const deleteTask = (...ids) => (dispatch) => {
+  dispatch({ type: actionTypes.DELETE_TASK.IS_FETCHING });
+  const idsPromises = ids.map((id) => axios.delete(`tasks/${id}.json`));
+  Promise.all(idsPromises)
     .then(() => {
-      dispatch(deleteTask());
+      dispatch({ type: actionTypes.DELETE_TASK.HAS_FETCHED });
       dispatch(initTaskList());
-    });
+    })
+    .catch((err) => console.log(err));
 };

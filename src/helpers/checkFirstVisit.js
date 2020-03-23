@@ -1,5 +1,6 @@
-export default () => {
-  const isFirstVisit = sessionStorage.getItem('firstVisit');
-  sessionStorage.setItem('firstVisit', 'true');
+export default (isFirstVisit) => {
+  if (!isFirstVisit) {
+    sessionStorage.setItem('firstVisit', 'true');
+  }
   return !isFirstVisit;
 };

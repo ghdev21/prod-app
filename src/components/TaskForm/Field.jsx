@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classes from './Form.module.scss';
 import * as action from '../../store/actions';
-import generateField from '../../helpers/generateField';
+import generateField from './generateField';
 
 const Field = (props) => {
   const isEstimation = props.labelName === 'estimation';

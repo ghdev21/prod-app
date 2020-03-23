@@ -1,16 +1,16 @@
 import React from 'react';
-import classes from './FilterBar.module.scss';
+import classes from './Bar.module.scss';
 
 export default ({ marks, activeElement, handler }) => (
-  <ul className={classes.FilterList}>
+  <ul className={classes.List}>
     {marks.map(item => {
       const isActive = item === activeElement
-        ? `${classes.FilterButton} ${classes.Active}`
-        : classes.FilterButton;
+        ? `${classes.ListButton} ${classes.Active}`
+        : classes.ListButton;
 
       return (
         <li
-          className={classes.FilterItem}
+          className={classes.ListItem}
           key={item}
         >
           <button

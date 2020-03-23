@@ -16,15 +16,15 @@ const getValueFromField = (data) => {
 const Form = ({
   taskList,
   onCloseTaskListModal,
-  onStartSaveTask,
-  onStartUpdateTask,
-  onStartDeleteTask,
+  onSaveTask,
+  onUpdateTask,
+  onDeleteTask,
 }) => {
   const { taskFormOpts, editableTask } = taskList;
-
   const cancelHandler = () => {
     onCloseTaskListModal();
   };
+
   const saveHandler = () => {
     const data = taskFormOpts.map(getValueFromField);
     const taskData = data.reduce((obj, nextObj) => ({ ...obj, ...nextObj }));
@@ -34,21 +34,20 @@ const Form = ({
       completeDate: null,
       status: null,
       completedCount: 0,
+      isDaily: editableTask && editableTask.taskData.isDaily,
       failedPomodoros: [],
-      isDaily: false,
-      done: false,
       ...taskData,
     };
 
     if (editableTask) {
-      onStartUpdateTask(dataToSend, editableTask);
+      onUpdateTask({ data: dataToSend, id: editableTask.id });
     } else {
-      onStartSaveTask(dataToSend);
+      onSaveTask(dataToSend);
     }
   };
 
   const deleteHandler = () => {
-    onStartDeleteTask(editableTask);
+    onDeleteTask(editableTask.id);
   };
   const buttons = formButtons(editableTask, [cancelHandler, saveHandler, deleteHandler]);
   const modalContent = (
@@ -89,9 +88,9 @@ const mapStateToProps = ({ taskList }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCloseTaskListModal: () => dispatch(action.closeTaskListModal()),
-  onStartSaveTask: (data) => dispatch(action.startSaveTask(data)),
-  onStartUpdateTask: (data, id) => dispatch(action.startUpdateTask(data, id)),
-  onStartDeleteTask: (id) => dispatch(action.startDeleteTask(id)),
+  onSaveTask: (data) => dispatch(action.saveTask(data)),
+  onUpdateTask: (taskObj) => dispatch(action.updateTask(taskObj)),
+  onDeleteTask: (id) => dispatch(action.deleteTask(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
