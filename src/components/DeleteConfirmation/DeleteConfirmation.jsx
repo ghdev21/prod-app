@@ -17,8 +17,18 @@ export default ({ elements, loading }) => {
           ? <Spinner />
           : (
             <>
-              <h2 className={classes.Title}>Remove Task</h2>
-              <p className={classes.Message}>Are you sure you want to remove selected task(s)?</p>
+              <h2
+                className={classes.Title}
+                data-test="Title"
+              >
+                Remove Task
+              </h2>
+              <p
+                className={classes.Message}
+                data-test="Message"
+              >
+                Are you sure you want to remove selected task(s)?
+              </p>
              <div className={classes.ButtonWrapper}>
                <Button
                  color="Blue"
@@ -36,6 +46,7 @@ export default ({ elements, loading }) => {
               <button
                 onClick={declineDelete}
                 className={`${classes.Close} icon-close`}
+                data-test="Close button"
               />
             </>
           )
