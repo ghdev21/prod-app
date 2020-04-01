@@ -15,6 +15,10 @@ describe('<PlusBtn />', () => {
     };
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render into the document', () => {
     const component = buildComponent(props);
 

@@ -13,6 +13,10 @@ describe('<Logo />', () => {
     props = { shown: true };
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('Should render <Logo /> if shown property passed', () => {
     const component = buildComponent(props);
 

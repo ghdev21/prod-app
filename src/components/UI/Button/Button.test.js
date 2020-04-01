@@ -2,9 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Button from './Button';
 
-const buildComponent = (newProps) => {
-  return shallow(<Button {...newProps} />);
-};
+const buildComponent = (newProps) => shallow(<Button {...newProps} />);
 
 describe('<Button />', () => {
   let props;
@@ -15,6 +13,10 @@ describe('<Button />', () => {
       clickHandler: jest.fn(),
       children: 'test',
     };
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('Should render <Button /> with passed props', () => {

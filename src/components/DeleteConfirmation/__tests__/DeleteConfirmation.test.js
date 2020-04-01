@@ -29,8 +29,15 @@ describe('<DeleteConfirmation />', () => {
     it('should render two <Button /> if passed loading false', () => {
       const component = buildComponent();
       const buttons = component.find(Button);
-
       expect(buttons).toHaveLength(2);
+    });
+
+
+    it('should invoke handler when clicked on <Button /> ', () => {
+      const buttonClickHandler = jest.fn();
+      const buttons = shallow(<Button clickHandler={buttonClickHandler} />);
+      buttons.simulate('click');
+      expect(buttonClickHandler).toHaveBeenCalled();
     });
 
     it('should render title <DeleteConfirmation /> modal if passed loading false', () => {
