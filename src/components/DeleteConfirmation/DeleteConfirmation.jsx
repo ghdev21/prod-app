@@ -7,6 +7,8 @@ import classes from './DeleteConfirmation.module.scss';
 
 export default ({ elements, loading }) => {
   const dispatch = useDispatch();
+  const declineDelete = () => dispatch(action.declineDeleting());
+  const removeTasks = () => dispatch(action.deleteTask(...elements));
 
   return (
     <div className={classes.Container}>
@@ -15,25 +17,36 @@ export default ({ elements, loading }) => {
           ? <Spinner />
           : (
             <>
-              <h2 className={classes.Title}>Remove Task</h2>
-              <p className={classes.Message}>Are you sure you want to remove selected task(s)?</p>
+              <h2
+                className={classes.Title}
+                data-test="Title"
+              >
+                Remove Task
+              </h2>
+              <p
+                className={classes.Message}
+                data-test="Message"
+              >
+                Are you sure you want to remove selected task(s)?
+              </p>
              <div className={classes.ButtonWrapper}>
                <Button
                  color="Blue"
-                 clickHandler={() => dispatch(action.declineDeleting())}
+                 clickHandler={declineDelete}
                >
                  Cancel
                </Button>
                <Button
                  color="Remove"
-                 clickHandler={() => dispatch(action.deleteTask(...elements))}
+                 clickHandler={removeTasks}
                >
                  Remove
                </Button>
              </div>
               <button
-                onClick={() => dispatch(action.declineDeleting())}
+                onClick={declineDelete}
                 className={`${classes.Close} icon-close`}
+                data-test="Close button"
               />
             </>
           )
