@@ -34,3 +34,54 @@
     background: darken($color-btn-blue, 5%);
   }
 }
+
+.Remove {
+  background: $color-btn-red;
+
+  &:active,
+  &:hover {
+    background: darken($color-btn-red, 5%);
+  }
+}
+
+.TaskListButtons {
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+  color: $color-nepal;
+}
+
+.TaskListItem {
+  & + & {
+    margin-left: 20px;
+  }
+}
+
+
+.TrashItem {
+  position: relative;
+}
+
+.TrashCounter {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -50%;
+  bottom: -50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  background-color: $color-urgent;
+  border-radius: 50%;
+}
+
+.TaskListButton {
+  font-size: 1rem;
+  &:hover {
+    color: $color-spray;
+  }
+  &.Active {
+    color: $color-white;
+  }
+}

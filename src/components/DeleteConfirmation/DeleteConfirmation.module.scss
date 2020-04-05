@@ -1,0 +1,43 @@
+@import '../../assets/styles/helpers/variables';
+
+.Container {
+  position: relative;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 45px 75px 50px;
+  background-color: $color-main-background;
+}
+
+.Title {
+  font-size: 1.75rem;
+  margin-bottom: 160px;
+}
+
+.Message {
+  margin-bottom: 180px;
+  color: $color-nepal;
+  font-weight: 300;
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.ButtonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: $color-nepal;
+  font-size: 1.25rem;
+
+  &:hover {
+    color: $color-spray;
+  }
+}

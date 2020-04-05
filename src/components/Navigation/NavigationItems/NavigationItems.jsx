@@ -8,7 +8,7 @@ import {
   STATISTIC,
 } from '../../../constants/Routes';
 
-export default (props) => (
+export default () => (
   <ul className={classes.Menu}>
     {[TASK_LIST, STATISTIC, SETTINGS].map((item) => <NavigationItem title={item} key={item} />)}
   </ul>

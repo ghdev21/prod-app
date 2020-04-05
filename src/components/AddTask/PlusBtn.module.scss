@@ -1,4 +1,14 @@
+@import "src/assets/styles/helpers/variables";
 .Button {
   font-size: 1rem;
   display: flex;
+}
+
+header {
+  .Button {
+    font-size: .9rem;
+    &:hover {
+      color: $color-spray;
+    }
+  }
 }
