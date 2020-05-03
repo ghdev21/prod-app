@@ -17,7 +17,7 @@ export default withRouter(({ match }) => {
     loading,
   } = useSelector((state) => state.timer);
   const dispatch = useDispatch();
-  const initHandler = useCallback(() => dispatch(actionTypes.initTimer(id)), [dispatch]);
+  const initHandler = useCallback(() => dispatch(actionTypes.initTimer(id)), [dispatch, id]);
   const startHandler = useCallback(() => dispatch(actionTypes.startIteration()), [dispatch]);
   const finishHandler = () => dispatch(actionTypes.finishIteration());
 
@@ -27,12 +27,13 @@ export default withRouter(({ match }) => {
     if (isCleaned) {
       startHandler();
     }
-  }, [isCleaned]);
+  }, [isCleaned, startHandler]);
 
   return !loading && (
     <div>
       <TimerInfo task={task} />
       <Clock
+        mode={mode}
         time={time}
         turn={turn}
       />
