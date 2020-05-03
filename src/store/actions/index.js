@@ -24,3 +24,10 @@ export {
   updateTrashItem,
   declineDeleting,
 } from './taskList';
+
+export {
+  initTimer,
+  startIteration,
+  finishIteration,
+  countDown,
+} from './timer';
