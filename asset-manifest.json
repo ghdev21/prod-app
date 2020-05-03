@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.css": "/prod-app/static/css/main.add06e04.chunk.css",
-    "main.js": "/prod-app/static/js/main.763e04c8.chunk.js",
-    "main.js.map": "/prod-app/static/js/main.763e04c8.chunk.js.map",
-    "runtime-main.js": "/prod-app/static/js/runtime-main.342e30d0.js",
-    "runtime-main.js.map": "/prod-app/static/js/runtime-main.342e30d0.js.map",
-    "static/js/2.8a539121.chunk.js": "/prod-app/static/js/2.8a539121.chunk.js",
-    "static/js/2.8a539121.chunk.js.map": "/prod-app/static/js/2.8a539121.chunk.js.map",
+    "main.css": "/prod-app/static/css/main.f5dacd27.chunk.css",
+    "main.js": "/prod-app/static/js/main.f18c5751.chunk.js",
+    "main.js.map": "/prod-app/static/js/main.f18c5751.chunk.js.map",
+    "runtime-main.js": "/prod-app/static/js/runtime-main.ed935b55.js",
+    "runtime-main.js.map": "/prod-app/static/js/runtime-main.ed935b55.js.map",
+    "static/js/2.4a036a89.chunk.js": "/prod-app/static/js/2.4a036a89.chunk.js",
+    "static/js/2.4a036a89.chunk.js.map": "/prod-app/static/js/2.4a036a89.chunk.js.map",
+    "static/css/3.4a537553.chunk.css": "/prod-app/static/css/3.4a537553.chunk.css",
+    "static/js/3.3465a02e.chunk.js": "/prod-app/static/js/3.3465a02e.chunk.js",
+    "static/js/3.3465a02e.chunk.js.map": "/prod-app/static/js/3.3465a02e.chunk.js.map",
     "index.html": "/prod-app/index.html",
-    "precache-manifest.e537863fa44ad5511363ee37f2db2a7c.js": "/prod-app/precache-manifest.e537863fa44ad5511363ee37f2db2a7c.js",
+    "precache-manifest.5255f2ba76074e58c40dcc484fb60ca5.js": "/prod-app/precache-manifest.5255f2ba76074e58c40dcc484fb60ca5.js",
     "service-worker.js": "/prod-app/service-worker.js",
-    "static/css/main.add06e04.chunk.css.map": "/prod-app/static/css/main.add06e04.chunk.css.map",
+    "static/css/3.4a537553.chunk.css.map": "/prod-app/static/css/3.4a537553.chunk.css.map",
+    "static/css/main.f5dacd27.chunk.css.map": "/prod-app/static/css/main.f5dacd27.chunk.css.map",
+    "static/js/2.4a036a89.chunk.js.LICENSE.txt": "/prod-app/static/js/2.4a036a89.chunk.js.LICENSE.txt",
     "static/media/Logo.svg": "/prod-app/static/media/Logo.73bf16d2.svg",
+    "static/media/Pomodoro.module.scss": "/prod-app/static/media/empty-tomato.632f3ef4.svg",
     "static/media/Form.module.scss": "/prod-app/static/media/fill_tomato.dc0cea8f.svg",
     "static/media/index.scss": "/prod-app/static/media/roboto-regular.ff3e98b7.woff",
     "static/media/tomato-add.svg": "/prod-app/static/media/tomato-add.40ce5e7a.svg",
@@ -19,9 +25,9 @@
     "static/media/tomato_settings.svg": "/prod-app/static/media/tomato_settings.07c3fe0a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.342e30d0.js",
-    "static/js/2.8a539121.chunk.js",
-    "static/css/main.add06e04.chunk.css",
-    "static/js/main.763e04c8.chunk.js"
+    "static/js/runtime-main.ed935b55.js",
+    "static/js/2.4a036a89.chunk.js",
+    "static/css/main.f5dacd27.chunk.css",
+    "static/js/main.f18c5751.chunk.js"
   ]
 }
