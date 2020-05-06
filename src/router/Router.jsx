@@ -15,7 +15,7 @@ import {
 } from '../constants/Routes';
 import Spinner from '../components/UI/Spinner/Spinner';
 
-const Timer = lazy(() => import('../containers/Timer/Timer'));
+const Timer = lazy(() => import('../containers/TimerPage/TimerPage'));
 
 export default () => (
   <Switch>
@@ -23,7 +23,7 @@ export default () => (
     <ProtectedRoute path={`/${SETTINGS}`} component={Settings} />
     <ProtectedRoute path={`/${STATISTIC}`} component={Statistic} />
     <Route path={`/${TIMER}/:id`} render={() => (
-      <Suspense fallback={Spinner()}>
+      <Suspense fallback={<Spinner/>}>
         <Timer />
       </Suspense>
     )} />

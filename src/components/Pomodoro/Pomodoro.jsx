@@ -3,11 +3,11 @@ import uuid from 'uuid/v1';
 import classes from './Pomodoro.module.scss';
 
 export default ({ estimation }) => {
-
+  const countOfIcons = parseInt(estimation, 10);
   return (
     <div className={classes.Wrapper}>
       <ul className={classes.List}>
-        {[...Array(parseInt(estimation))].map((_) => (
+        {[...Array(countOfIcons)].map((_) => (
           <li className={classes.ListItem} key={uuid()} />
         ))}
       </ul>

@@ -8,10 +8,10 @@ import switchTurn from '../utils/switchTurn';
 export const initialState = {
   settings: null,
   task: null,
-  turn: 0,
+  executionQueue: 0,
   mode: '',
   time: 0,
-  loading: true,
+  isLoading: true,
   isCleaned: false,
 };
 
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     case INIT_TIMER.IS_FETCHING:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
       };
 
     case INIT_TIMER.HAS_FETCHED:

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Clock.module.scss';
 
-export default ({ mode, time, turn }) => {
+export default ({ mode, time, executionQueue }) => {
   const timeInSeconds = time * 60;
 
   return (
@@ -9,8 +9,13 @@ export default ({ mode, time, turn }) => {
       <div className={classes.Clock}>
 
         <div className={classes.Overlay}>
-          {turn > 0
-            ? <div className={classes.Text}>{time} min </div>
+          {executionQueue > 0
+            ? (
+              <div className={classes.Text}>
+                {time}
+                min
+              </div>
+            )
             : <h3 className={classes.Text}>Let's do it</h3>}
         </div>
         {mode

@@ -27,8 +27,8 @@ export const countDown = () => ({
 
 export const initTimer = (id) => (dispatch) => {
   dispatch({ type: actionTypes.INIT_TIMER.IS_FETCHING });
-  const promisses = (['settings.json', `tasks/${id}.json`]).map((item) => axios.get(item));
+  const fetchedEndpoints = (['settings.json', `tasks/${id}.json`]).map((item) => axios.get(item));
 
-  Promise.all(promisses)
+  Promise.all(fetchedEndpoints)
     .then((res) => dispatch(saveSettings(res)));
 };

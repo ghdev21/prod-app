@@ -11,10 +11,10 @@ export default withRouter(({ match }) => {
   const {
     task,
     time,
-    turn,
+    executionQueue,
     mode,
     isCleaned,
-    loading,
+    isLoading,
   } = useSelector((state) => state.timer);
   const dispatch = useDispatch();
   const initHandler = useCallback(() => dispatch(actionTypes.initTimer(id)), [dispatch, id]);
@@ -29,13 +29,13 @@ export default withRouter(({ match }) => {
     }
   }, [isCleaned, startHandler]);
 
-  return !loading && (
+  return !isLoading && (
     <div>
       <TimerInfo task={task} />
       <Clock
         mode={mode}
         time={time}
-        turn={turn}
+        executionQueue={executionQueue}
       />
       <TimerControls
         start={startHandler}
