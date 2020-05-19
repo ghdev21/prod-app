@@ -1,0 +1,18 @@
+.Wrapper {
+ display: flex;
+  justify-content: center;
+}
+
+.List {
+  display: flex;
+  justify-content: center;
+}
+
+.ListItem {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../assets/images/empty-tomato.svg");
+  & + & {
+    margin-left: 10px;
+  }
+}

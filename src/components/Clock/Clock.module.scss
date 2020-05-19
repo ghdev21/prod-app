@@ -1,0 +1,106 @@
+@import "../../assets/styles/helpers/variables";
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 55px auto 65px auto;
+}
+
+.Clock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 265px;
+  height: 265px;
+  border-radius: 100%;
+  border: 5px solid $color-high;
+}
+
+.Overlay {
+  position: absolute;
+  display: flex;
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  border: 10px solid $color-main-background;
+  border-radius: 100%;
+  z-index: 1000;
+}
+
+.Text {
+  position: relative;
+  margin: auto;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  margin: 40px auto;
+  width: 240px;
+  height: 240px;
+  background-color: $color-main-background;
+  border-radius: 50%;
+  z-index: -1;
+  animation-duration: 5s;
+
+  .Pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    border: 40px solid $color-nepal;
+  }
+
+  .Spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    animation: rotate linear 1;
+  }
+
+  .Filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    animation: transparency steps(1, end) 1 reverse;
+    border-left: none;
+  }
+
+  .Mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background-color: inherit;
+    z-index: 300;
+    animation: transparency steps(1, end) 1;
+  }
+  .Spinner,
+  .Mask,
+  .Filler {
+    animation-duration: inherit;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes transparency {
+  0% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+
+

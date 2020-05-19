@@ -13,7 +13,8 @@ import {
   DISABLE_DELETE_MODE,
   UPDATE_TRASH,
   SHOW_DELETE_CONFIRMATION,
-  UPDATE_TRASH_ITEM, DECLINE_DELETING,
+  UPDATE_TRASH_ITEM,
+  DECLINE_DELETING,
 } from '../actions/actionTypes';
 import checkFirstVisit from '../../helpers/checkFirstVisit';
 import taskForm from '../../constants/TaskFormOpts';

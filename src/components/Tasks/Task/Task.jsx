@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import getTaskListConstants from '../../../helpers/getTaskListConstants';
 import classes from '../Task.module.scss';
 import DateBlock from './DateBlock';
@@ -7,6 +8,7 @@ export default (props) => {
   const { id, taskData, onEditTask, onUpdateTrashItem, onMoveToDaily, taskList } = props;
   const { shouldBeDeleteItems, isDeleteMode} = taskList;
   const { IS_DAILY_LIST, IS_DONE_LIST, IS_GLOBAL_LIST } = getTaskListConstants(taskData);
+  const history = useHistory();
   const isSelected = shouldBeDeleteItems.includes(id);
   const deleteMode = isDeleteMode ? classes.DeleteMode : '';
   const defaulClasses = [classes.Task, classes.Category, classes[taskData.category], deleteMode];
@@ -51,6 +53,9 @@ export default (props) => {
       <button
         disabled={IS_DONE_LIST}
         className={`${classes.Priority} ${classes[taskData.priority]}`}
+        onClick={() => {
+          history.push(`/timer/${id}`);
+        }}
       >
         <span className={`${classes.TomatoIcon} icon-tomato`}/>
         <span className={classes.Estimation}>{taskData.estimation}</span>
