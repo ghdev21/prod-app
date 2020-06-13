@@ -1,8 +1,9 @@
-import React from 'react';
-import timerButtonsConfig from '../constants/TimerButtonsConfig';
+import React, {FC} from 'react';
+import {timerButtonsConfig} from '../constants/TimerButtonsConfig';
 import Button from '../components/UI/Button/Button';
+import {ITimerControls} from "../components/TimerControls/TimerControls";
 
-export default ({ mode, finish, start }) => {
+export const createTimerButtons = ({ mode, finish, start }: ITimerControls): JSX.Element[] => {
   return timerButtonsConfig[mode || 'default'].map((item) => {
     const clickHandler = item.clickHandler === 'start'
       ? start

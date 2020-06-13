@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import classes from './Clock.module.scss';
 
-export default ({ mode, time, executionQueue }) => {
+interface IClock {
+    mode: string,
+    time: number | 0,
+    executionQueue: number
+}
+
+export const Clock:FC<IClock> = ({ mode, time, executionQueue }) => {
   const timeInSeconds = time * 60;
 
   return (
