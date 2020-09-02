@@ -1,13 +1,19 @@
-import React, { useEffect, useCallback } from 'react';
+import React, {useEffect, useCallback, FC} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import TimerInfo from '../../components/TimerInfo/TimerInfo';
-import Clock from '../../components/Clock/Clock';
-import TimerControls from '../../components/TimerControls/TimerControls';
+import {RouteComponentProps} from 'react-router';
+import { TimerInfo } from '../../components/TimerInfo/TimerInfo';
+import { Clock } from '../../components/Clock/Clock';
+import { TimerControls } from '../../components/TimerControls/TimerControls';
 import * as actionTypes from '../../store/actions';
+import {Store} from "../../types/Store";
 
-export default withRouter(({ match }) => {
-  const { id } = match.params;
+type ComponentProps = RouteComponentProps<{id: string}>;
+
+const TimerPage:FC<ComponentProps> = (props) => {
+  const {match: {
+    params: {id},
+  }} = props;
   const {
     task,
     time,
@@ -15,13 +21,15 @@ export default withRouter(({ match }) => {
     mode,
     isCleaned,
     isLoading,
-  } = useSelector((state) => state.timer);
+  } = useSelector((state: Store.IState) => state.timer);
   const dispatch = useDispatch();
   const initHandler = useCallback(() => dispatch(actionTypes.initTimer(id)), [dispatch, id]);
   const startHandler = useCallback(() => dispatch(actionTypes.startIteration()), [dispatch]);
   const finishHandler = () => dispatch(actionTypes.finishIteration());
 
-  useEffect(() => initHandler(), [initHandler]);
+  useEffect(() => {
+    initHandler()
+  }, [initHandler, id]);
 
   useEffect(() => {
     if (isCleaned) {
@@ -29,7 +37,7 @@ export default withRouter(({ match }) => {
     }
   }, [isCleaned, startHandler]);
 
-  return !isLoading && (
+  return !isLoading ? (
     <div>
       <TimerInfo task={task} />
       <Clock
@@ -43,5 +51,7 @@ export default withRouter(({ match }) => {
         mode={mode}
       />
     </div>
-  );
-});
+  ): null;
+};
+
+export default withRouter(TimerPage);

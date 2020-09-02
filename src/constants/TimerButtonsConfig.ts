@@ -1,6 +1,18 @@
+// @ts-ignore
 import uuid from 'uuid/v1';
 
-export default {
+type Obj = {
+  id: string,
+  text: string,
+  clickHandler: 'start' | 'finish',
+  color: string
+}
+
+export interface TimerButtonsConfigModel {
+  [key: string]: [Obj, Obj] | [Obj],
+}
+
+export const timerButtonsConfig = <TimerButtonsConfigModel> {
   break: [
     {
       id: uuid(),
